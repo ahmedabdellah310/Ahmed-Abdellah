@@ -11,6 +11,12 @@
         content="software engineer, web developer, designer, frontend, backend, full stack, web design, programming">
     <meta name="author" content="Ahmed Abdellah">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Ahmed Abdellah - Software Engineer & Web Developer">
     <meta property="og:description"
@@ -61,14 +67,20 @@
             --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
             --gradient-secondary: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
             --gradient-accent: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
+            --font-ar: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            --font-en: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: var(--font-en);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
+        }
+
+        html[lang="ar"] body {
+            font-family: var(--font-ar);
         }
 
         /* Progress Bar */
@@ -464,29 +476,69 @@
         .hero-image {
             position: relative;
             animation: float 6s ease-in-out infinite;
+            --image-border-size: 300px;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: var(--image-border-size);
+            height: var(--image-border-size);
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            z-index: 1;
+            animation: rotate-border 20s linear infinite;
+            filter: saturate(1.05);
+            transition: filter 300ms ease;
+            will-change: transform;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: var(--image-border-size);
+            height: var(--image-border-size);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.55) 35%,
+                    rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%) translateX(-120%);
+            mix-blend-mode: soft-light;
         }
 
         .profile-img {
             width: 280px;
-            height: 350px;
-            border-radius: 20px;
+            height: 280px;
+            border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--bg-white);
+            border: 0;
             box-shadow: var(--card-shadow);
             position: relative;
             z-index: 2;
+            transition: transform 300ms ease, box-shadow 300ms ease, filter 300ms ease;
+            will-change: transform;
         }
 
-        .image-border {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: 300px;
-            height: 370px;
-            border-radius: 25px;
-            background: var(--gradient-primary);
-            z-index: 1;
-            animation: rotate 20s linear infinite;
+        .hero-image:hover .profile-img {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+            filter: contrast(1.05) saturate(1.05);
+        }
+
+        .hero-image:hover::before {
+            filter: drop-shadow(0 18px 55px rgba(0, 0, 0, 0.25)) saturate(1.15);
+        }
+
+        .hero-image:hover::after {
+            opacity: 1;
+            animation: shine-sweep 900ms ease-out;
         }
 
         .hero-text {
@@ -1165,13 +1217,13 @@
             }
         }
 
-        @keyframes rotate {
+        @keyframes rotate-border {
             from {
-                transform: rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
             }
 
             to {
-                transform: rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
             }
         }
 
@@ -1248,12 +1300,12 @@
 
             .profile-img {
                 width: 200px;
-                height: 250px;
+                height: 200px;
+                border-radius: 50%;
             }
 
-            .image-border {
-                width: 220px;
-                height: 270px;
+            .hero-image {
+                --image-border-size: 220px;
             }
 
             .name {
@@ -1389,9 +1441,7 @@
         <div class="hero-background"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-image"><img src="profile.jpg" alt="أحمد عبداللاه" class="profile-img">
-                    <div class="image-border"></div>
-                </div>
+                <div class="hero-image"><img src="profile.jpg" alt="أحمد عبداللاه" class="profile-img"></div>
                 <div class="hero-text">
                     <h1 class="hero-title"><span class="greeting" data-ar="مرحباً، أنا" data-en="Hi, I'm">مرحباً،
                             أنا</span><span class="name">أحمد عبداللاه</span></h1>
@@ -2264,26 +2314,26 @@
                 aboutSummary: 'اليوم أقدم مزيجاً قوياً بين الإدارة التشغيلية، والفهم المالي، وخبرة التعامل مع العملاء لتحسين الأداء وكفاءة الأعمال.',
                 exp1Title: 'شريك مؤسس ومدير تشغيل',
                 exp1Duration: '3 سنوات',
-                exp1Desc: 'إدارة التشغيل، المالية، القانونيات، التسويق، وتطوير الأعمال',
+                exp1Desc: 'قيادة التشغيل اليومي لشركة ناشئة: إعداد الميزانيات والتدفقات النقدية، توثيق الإجراءات (SOPs)، التنسيق مع التسويق، وإدارة عقود الموردين وخطط التوسع.',
                 exp2Title: 'مشرف التكاليف',
                 exp2Duration: '2.5 سنة',
-                exp2Desc: 'التحكم في المخزون، تحليل التكاليف، إدارة الموردين',
+                exp2Desc: 'متابعة تكلفة المبيعات والمواد، جرد المخزون ومعالجة الفروقات، إعداد تقارير شهرية ولوحات مؤشرات، والتفاوض على الأسعار وتحسين شروط التوريد.',
                 exp3Title: 'مشرف المشتريات',
                 exp3Duration: 'سنة واحدة',
-                exp3Desc: 'اختيار الموردين، التفاوض، إدارة أوامر الشراء',
+                exp3Desc: 'إدارة دورة الشراء كاملة: طلب عروض الأسعار (RFQs)، تقييم الموردين، إصدار أوامر الشراء، متابعة التسليمات، وضمان الالتزام بالمواصفات.',
                 exp4Title: 'استقبال وإدارة تشغيل فندق بوتيك',
                 exp4Duration: 'سنتان',
-                exp4Desc: 'تجربة الضيوف، التشغيل اليومي، تنسيق الفريق',
+                exp4Desc: 'إدارة الاستقبال والحجوزات وخدمة الضيوف، تنظيم الشِفتات، معالجة الشكاوى (Service Recovery)، والتنسيق بين الأقسام لضمان جودة الخدمة.',
                 skill1: 'إدارة التشغيل',
-                skill2: 'تطوير الأعمال',
-                skill3: 'التحكم في التكاليف',
-                skill4: 'المشتريات وإدارة الموردين',
-                skill5: 'التحكم في المخزون',
-                skill6: 'تشغيل الضيافة',
-                skill7: 'تجربة العملاء',
-                skill8: 'إدارة الاستقبال',
-                skill9: 'تنسيق الفريق',
-                skill10: 'تحسين العمليات',
+                skill2: 'التحكم في التكاليف والميزانية',
+                skill3: 'المشتريات وإدارة الموردين',
+                skill4: 'إدارة المخزون',
+                skill5: 'تحسين العمليات وتوثيق الإجراءات',
+                skill6: 'مؤشرات الأداء وإعداد التقارير',
+                skill7: 'تجربة العملاء وخدمة ما بعد البيع',
+                skill8: 'قيادة الفرق وتنسيق العمل',
+                skill9: 'تشغيل الضيافة',
+                skill10: 'تطوير الأعمال',
                 projectName1: 'تأسيس وإدارة شركة ناشئة',
                 projectDesc1: 'بناء وإدارة عمليات شركة ناشئة من الصفر',
                 projectName2: 'تحسين التكاليف والمشتريات',
@@ -2311,9 +2361,7 @@
                 formValidationError: 'يرجى ملء جميع الحقول',
                 formEmailError: 'يرجى إدخال بريد إلكتروني صحيح',
                 footerText: 'جميع الحقوق محفوظة © 2024 أحمد عبداللاه'
-            }
-
-            ,
+            },
             en: {
                 greeting: 'Hi, I\'m',
                 heroSubtitle: 'Operations & Business Management',
@@ -2342,26 +2390,26 @@
                 aboutSummary: 'Today, I bring a unique mix of operational leadership, financial discipline, and customer-centric thinking that helps businesses improve processes, reduce costs, and enhance service quality.',
                 exp1Title: 'Startup Co-founder & Operations Manager',
                 exp1Duration: '3 Years',
-                exp1Desc: 'Business operations, finance, legal workflows, marketing, expansion',
+                exp1Desc: 'Led day-to-day operations for an early-stage startup: budgeting and cashflow, SOP documentation, marketing coordination, vendor contracts, and expansion planning.',
                 exp2Title: 'Cost Control & Procurement Supervisor',
                 exp2Duration: '2.5 Years',
-                exp2Desc: 'Inventory control, cost analysis, supplier management',
+                exp2Desc: 'Tracked COGS and materials usage, reconciled inventory variances, built monthly cost dashboards, and negotiated pricing and supply terms with key vendors.',
                 exp3Title: 'Purchasing Supervisor',
                 exp3Duration: '1 Year',
-                exp3Desc: 'Vendor selection, negotiations, PO management',
+                exp3Desc: 'Managed the full purchasing cycle: RFQs, supplier evaluation, purchase orders, delivery follow-up, and quality/spec compliance.',
                 exp4Title: 'Front Desk & Hotel Operations',
                 exp4Duration: '2 Years',
-                exp4Desc: 'Guest experience, daily operations, team coordination',
+                exp4Desc: 'Handled front desk and reservations, improved guest experience, managed shift schedules, resolved service issues, and coordinated with operations teams.',
                 skill1: 'Operations Management',
-                skill2: 'Business Development',
-                skill3: 'Cost Control & Analysis',
-                skill4: 'Procurement & Supplier Management',
-                skill5: 'Inventory & Stock Control',
-                skill6: 'Hospitality Operations',
+                skill2: 'Cost Control & Budgeting',
+                skill3: 'Procurement & Vendor Management',
+                skill4: 'Inventory Management',
+                skill5: 'Process Improvement & SOPs',
+                skill6: 'KPI Reporting & Dashboards',
                 skill7: 'Customer Experience',
-                skill8: 'Front Desk Management',
-                skill9: 'Team Coordination',
-                skill10: 'Process Improvement',
+                skill8: 'Team Leadership & Coordination',
+                skill9: 'Hospitality Operations',
+                skill10: 'Business Development',
                 projectName1: 'Built and Managed Startup Operations',
                 projectDesc1: 'Established and managed startup operations from scratch',
                 projectName2: 'Cost & Procurement Optimization',
@@ -2388,10 +2436,8 @@
                 formError: 'An error occurred while sending. Please try again',
                 formValidationError: 'Please fill all fields',
                 formEmailError: 'Please enter a valid email',
-                footerText: 'All rights reserved © 2024 Ahmed Abdellah'
-            }
-
-            ,
+                footerText: 'All rights reserved 2024 Ahmed Abdellah'
+            },
             fr: {
                 greeting: 'Bonjour, je suis',
                 heroSubtitle: 'Opérations et Gestion d\'Entreprise',
@@ -2420,26 +2466,26 @@
                 aboutSummary: 'Aujourd\'hui, j\'apporte un mélange unique de leadership opérationnel, de discipline financière et de pensée centrée sur le client qui aide les entreprises à améliorer les processus, à réduire les coûts et à améliorer la qualité du service.',
                 exp1Title: 'Cofondateur et Directeur des Opérations de Startup',
                 exp1Duration: '3 Ans',
-                exp1Desc: 'Opérations commerciales, finance, flux juridiques, marketing, expansion',
+                exp1Desc: 'Pilotage des opérations quotidiennes d’une startup : budget et trésorerie, documentation des procédures (SOPs), coordination marketing, contrats fournisseurs et planification de l’expansion.',
                 exp2Title: 'Superviseur du Contrôle des Coûts et des Approvisionnements',
                 exp2Duration: '2.5 Ans',
-                exp2Desc: 'Contrôle des stocks, analyse des coûts, gestion des fournisseurs',
+                exp2Desc: 'Suivi des coûts (COGS), rapprochement des écarts d’inventaire, création de tableaux de bord mensuels, et négociation des prix et conditions avec les fournisseurs clés.',
                 exp3Title: 'Superviseur des Achats',
                 exp3Duration: '1 An',
-                exp3Desc: 'Sélection des fournisseurs, négociations, gestion des commandes d\'achat',
+                exp3Desc: 'Gestion du cycle d’achat complet : RFQs, évaluation des fournisseurs, bons de commande, suivi des livraisons, et conformité qualité/spécifications.',
                 exp4Title: 'Réception et Opérations Hôtelières',
                 exp4Duration: '2 Ans',
-                exp4Desc: 'Expérience client, opérations quotidiennes, coordination d\'équipe',
+                exp4Desc: 'Gestion de la réception et des réservations, amélioration de l’expérience client, organisation des plannings, résolution des incidents de service, et coordination avec les équipes opérationnelles.',
                 skill1: 'Gestion des Opérations',
-                skill2: 'Développement Commercial',
-                skill3: 'Contrôle des Coûts et Analyse',
-                skill4: 'Approvisionnement et Gestion des Fournisseurs',
-                skill5: 'Contrôle des Stocks',
-                skill6: 'Opérations Hôtelières',
+                skill2: 'Contrôle des Coûts & Budgétisation',
+                skill3: 'Achats & Gestion des Fournisseurs',
+                skill4: 'Gestion des Stocks',
+                skill5: 'Amélioration des Processus & SOPs',
+                skill6: 'KPIs, Reporting & Tableaux de Bord',
                 skill7: 'Expérience Client',
-                skill8: 'Gestion de la Réception',
-                skill9: 'Coordination d\'Équipe',
-                skill10: 'Amélioration des Processus',
+                skill8: 'Leadership & Coordination d\'Équipe',
+                skill9: 'Opérations Hôtelières',
+                skill10: 'Développement Commercial',
                 projectName1: 'Création et Gestion des Opérations de Startup',
                 projectDesc1: 'Établissement et gestion des opérations de startup à partir de zéro',
                 projectName2: 'Optimisation des Coûts et Approvisionnements',
@@ -2466,10 +2512,8 @@
                 formError: 'Une erreur s\'est produite lors de l\'envoi. Veuillez réessayer',
                 formValidationError: 'Veuillez remplir tous les champs',
                 formEmailError: 'Veuillez entrer un email valide',
-                footerText: 'Tous droits réservés © 2024 Ahmed Abdellah'
-            }
-
-            ,
+                footerText: 'Tous droits réservés 2024 Ahmed Abdellah'
+            },
             de: {
                 greeting: 'Hallo, ich bin',
                 heroSubtitle: 'Operations & Business Management',
@@ -2498,26 +2542,26 @@
                 aboutSummary: 'Heute bringe ich eine einzigartige Mischung aus operativer Führung, finanzieller Disziplin und kundenorientiertem Denken, das Unternehmen hilft, Prozesse zu verbessern, Kosten zu senken und die Servicequalität zu erhöhen.',
                 exp1Title: 'Startup-Mitgründer & Operations Manager',
                 exp1Duration: '3 Jahre',
-                exp1Desc: 'Geschäftsoperationen, Finanzen, rechtliche Abläufe, Marketing, Expansion',
+                exp1Desc: 'Leitung des Tagesgeschäfts eines Early-Stage-Startups: Budgetierung und Cashflow, SOP-Dokumentation, Marketing-Koordination, Lieferantenverträge und Expansionsplanung.',
                 exp2Title: 'Kostenkontrolle & Beschaffungsleiter',
                 exp2Duration: '2.5 Jahre',
-                exp2Desc: 'Bestandskontrolle, Kostenanalyse, Lieferantenmanagement',
+                exp2Desc: 'Überwachung von COGS und Materialverbrauch, Abgleich von Bestandsdifferenzen, Aufbau monatlicher Cost-Dashboards sowie Verhandlung von Preisen und Lieferbedingungen.',
                 exp3Title: 'Einkaufsleiter',
                 exp3Duration: '1 Jahr',
-                exp3Desc: 'Lieferantenauswahl, Verhandlungen, Bestellmanagement',
+                exp3Desc: 'End-to-End Beschaffung: RFQs, Lieferantenbewertung, Bestellabwicklung, Lieferterminverfolgung sowie Qualitäts- und Spezifikationskonformität.',
                 exp4Title: 'Rezeption & Hotelbetrieb',
                 exp4Duration: '2 Jahre',
-                exp4Desc: 'Gästeerfahrung, tägliche Operationen, Teamkoordination',
+                exp4Desc: 'Betreuung von Rezeption und Reservierungen, Steigerung der Gästezufriedenheit, Schichtplanung, Bearbeitung von Servicefällen und Abstimmung mit den operativen Teams.',
                 skill1: 'Operations Management',
-                skill2: 'Business Development',
-                skill3: 'Kostenkontrolle & Analyse',
-                skill4: 'Beschaffung & Lieferantenmanagement',
-                skill5: 'Bestandskontrolle',
-                skill6: 'Hotelbetrieb',
-                skill7: 'Kundenerfahrung',
-                skill8: 'Rezeptionsmanagement',
-                skill9: 'Teamkoordination',
-                skill10: 'Prozessverbesserung',
+                skill2: 'Kostenkontrolle & Budgetierung',
+                skill3: 'Beschaffung & Lieferantenmanagement',
+                skill4: 'Bestandsmanagement',
+                skill5: 'Prozessverbesserung & SOPs',
+                skill6: 'KPI-Reporting & Dashboards',
+                skill7: 'Customer Experience',
+                skill8: 'Teamführung & Koordination',
+                skill9: 'Hospitality Operations',
+                skill10: 'Business Development',
                 projectName1: 'Startup-Operationen aufgebaut und gemanagt',
                 projectDesc1: 'Aufbau und Management von Startup-Operationen von Grund auf',
                 projectName2: 'Kosten- & Beschaffungsoptimierung',
@@ -2544,10 +2588,8 @@
                 formError: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut',
                 formValidationError: 'Bitte füllen Sie alle Felder aus',
                 formEmailError: 'Bitte geben Sie eine gültige E-Mail ein',
-                footerText: 'Alle Rechte vorbehalten © 2024 Ahmed Abdellah'
-            }
-
-            ,
+                footerText: 'Alle Rechte vorbehalten 2024 Ahmed Abdellah'
+            },
             es: {
                 greeting: 'Hola, soy',
                 heroSubtitle: 'Operaciones y Gestión Empresarial',
@@ -2576,26 +2618,26 @@
                 aboutSummary: 'Hoy, ofrezco una mezcla única de liderazgo operativo, disciplina financiera y pensamiento centrado en el cliente que ayuda a las empresas a mejorar procesos, reducir costos y mejorar la calidad del servicio.',
                 exp1Title: 'Cofundador y Gerente de Operaciones de Startup',
                 exp1Duration: '3 Años',
-                exp1Desc: 'Operaciones comerciales, finanzas, flujos legales, marketing, expansión',
+                exp1Desc: 'Lideré las operaciones diarias de una startup: presupuesto y flujo de caja, documentación de procesos (SOPs), coordinación de marketing, contratos con proveedores y plan de expansión.',
                 exp2Title: 'Supervisor de Control de Costos y Compras',
                 exp2Duration: '2.5 Años',
-                exp2Desc: 'Control de inventario, análisis de costos, gestión de proveedores',
+                exp2Desc: 'Monitoreé COGS y consumo de materiales, concilié diferencias de inventario, construí tableros mensuales de costos y negocié precios y condiciones con proveedores.',
                 exp3Title: 'Supervisor de Compras',
                 exp3Duration: '1 Año',
-                exp3Desc: 'Selección de proveedores, negociaciones, gestión de órdenes de compra',
+                exp3Desc: 'Gestioné el ciclo completo de compras: RFQs, evaluación de proveedores, órdenes de compra, seguimiento de entregas y cumplimiento de calidad/especificaciones.',
                 exp4Title: 'Recepción y Operaciones Hoteleras',
                 exp4Duration: '2 Años',
-                exp4Desc: 'Experiencia de huéspedes, operaciones diarias, coordinación de equipo',
+                exp4Desc: 'Atendí recepción y reservas, mejoré la experiencia del huésped, organicé turnos, resolví incidencias de servicio y coordiné con equipos operativos.',
                 skill1: 'Gestión de Operaciones',
-                skill2: 'Desarrollo de Negocios',
-                skill3: 'Control de Costos y Análisis',
-                skill4: 'Compras y Gestión de Proveedores',
-                skill5: 'Control de Inventario',
-                skill6: 'Operaciones Hoteleras',
+                skill2: 'Control de Costos y Presupuesto',
+                skill3: 'Compras y Gestión de Proveedores',
+                skill4: 'Gestión de Inventario',
+                skill5: 'Mejora de Procesos y SOPs',
+                skill6: 'KPIs, Reportes y Tableros',
                 skill7: 'Experiencia del Cliente',
-                skill8: 'Gestión de Recepción',
-                skill9: 'Coordinación de Equipo',
-                skill10: 'Mejora de Procesos',
+                skill8: 'Liderazgo y Coordinación de Equipos',
+                skill9: 'Operaciones Hoteleras',
+                skill10: 'Desarrollo de Negocios',
                 projectName1: 'Construí y Gestioné Operaciones de Startup',
                 projectDesc1: 'Establecí y gestioné operaciones de startup desde cero',
                 projectName2: 'Optimización de Costos y Compras',
@@ -2622,10 +2664,8 @@
                 formError: 'Ocurrió un error al enviar. Por favor intenta de nuevo',
                 formValidationError: 'Por favor completa todos los campos',
                 formEmailError: 'Por favor ingresa un correo electrónico válido',
-                footerText: 'Todos los derechos reservados © 2024 Ahmed Abdellah'
-            }
-
-            ,
+                footerText: 'Todos los derechos reservados 2024 Ahmed Abdellah'
+            },
             zh: {
                 greeting: '你好，我是',
                 heroSubtitle: '运营与业务管理',
@@ -2654,26 +2694,26 @@
                 aboutSummary: '今天，我带来了运营领导力、财务纪律和以客户为中心的思维方式的独特组合，帮助企业改进流程、降低成本并提高服务质量。',
                 exp1Title: '初创公司联合创始人兼运营经理',
                 exp1Duration: '3年',
-                exp1Desc: '业务运营、财务、法律流程、营销、扩张',
+                exp1Desc: '负责初创公司日常运营：预算与现金流管理、SOP流程文档、市场协同、供应商合同管理与扩张规划。',
                 exp2Title: '成本控制与采购主管',
                 exp2Duration: '2.5年',
-                exp2Desc: '库存控制、成本分析、供应商管理',
+                exp2Desc: '跟踪成本与物料消耗，核对库存差异，制作月度成本看板与报表，并与核心供应商谈判价格与供货条件。',
                 exp3Title: '采购主管',
                 exp3Duration: '1年',
-                exp3Desc: '供应商选择、谈判、采购订单管理',
+                exp3Desc: '管理完整采购流程：询价（RFQ）、供应商评估、采购订单、交付跟进及质量/规格符合性。',
                 exp4Title: '前台与酒店运营',
                 exp4Duration: '2年',
-                exp4Desc: '客户体验、日常运营、团队协调',
+                exp4Desc: '负责前台与预订管理，提升住客体验，安排排班，处理服务问题并与运营团队协作。',
                 skill1: '运营管理',
-                skill2: '业务发展',
-                skill3: '成本控制与分析',
-                skill4: '采购与供应商管理',
-                skill5: '库存控制',
-                skill6: '酒店运营',
+                skill2: '成本控制与预算',
+                skill3: '采购与供应商管理',
+                skill4: '库存管理',
+                skill5: '流程改进与SOP',
+                skill6: 'KPI报表与看板',
                 skill7: '客户体验',
-                skill8: '前台管理',
-                skill9: '团队协调',
-                skill10: '流程改进',
+                skill8: '团队管理与协作',
+                skill9: '酒店运营',
+                skill10: '业务发展',
                 projectName1: '建立和管理初创公司运营',
                 projectDesc1: '从零开始建立和管理初创公司运营',
                 projectName2: '成本与采购优化',
