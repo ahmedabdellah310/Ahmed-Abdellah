@@ -293,6 +293,23 @@
         }
 
         /* Professional Sidebar Styles */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9998;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
         .sidebar {
             position: fixed;
             top: 0;
@@ -1344,6 +1361,10 @@
                 display: none;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
             .nav-actions {
                 gap: 0.8rem;
             }
@@ -2055,16 +2076,30 @@
         const sidebarClose = document.getElementById('sidebarClose');
 
         // Toggle sidebar
-        const toggleSidebar = () => {
-            sidebar.classList.toggle('active');
-            sidebarOverlay.classList.toggle('active');
-            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        const openSidebar = () => {
+            if (!sidebar.classList.contains('active')) {
+                sidebar.classList.add('active');
+                sidebarOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         };
 
-        if (hamburger) hamburger.addEventListener('click', toggleSidebar);
-        if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
-        if (sidebarClose) sidebarClose.addEventListener('click', toggleSidebar);
-        if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+        const closeSidebar = () => {
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        };
+
+        if (sidebarToggle) sidebarToggle.addEventListener('click', openSidebar);
+        if (hamburger) hamburger.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
+        window.addEventListener('resize', () => {
+            closeSidebar();
+        });
 
         // Close sidebar when clicking on a link
         document.querySelectorAll('.sidebar-nav-item').forEach(link => {
