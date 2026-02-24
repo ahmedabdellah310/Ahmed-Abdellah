@@ -1,0 +1,3475 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>أحمد عبداللاه - Software Engineer & Web Developer & Designer</title>
+    <meta name="description"
+        content="Ahmed Abdellah - Software Engineer & Web Developer & Designer - Building modern web applications and beautiful designs">
+    <meta name="keywords"
+        content="software engineer, web developer, designer, frontend, backend, full stack, web design, programming">
+    <meta name="author" content="Ahmed Abdellah">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Ahmed Abdellah - Software Engineer & Web Developer">
+    <meta property="og:description"
+        content="Software Engineer & Web Developer & Designer - Building modern web applications and beautiful designs">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmed-abdellah.vercel.app/">
+    <meta property="og:image" content="profile.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Ahmed Abdellah - Software Engineer & Web Developer">
+    <meta property="twitter:description"
+        content="Software Engineer & Web Developer & Designer - Building modern web applications and beautiful designs">
+    <meta name="twitter:image" content="profile.jpg">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ahmed Abdellah",
+        "jobTitle": "Software Engineer & Web Developer & Designer",
+        "description": "Building modern web applications and beautiful designs using the latest technologies and tools.",
+        "email": "ahmedabdellah310@gmail.com",
+        "telephone": "+201126485957",
+        "url": "https://ahmed-abdellah.vercel.app/"
+    }
+    </script>
+
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c2c2c;
+            --secondary-color: #1a1a1a;
+            --accent-color: #4a4a4a;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6a6a6a;
+            --bg-light: #f5f5f5;
+            --bg-white: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            --gradient-secondary: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+            --gradient-accent: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
+            --font-ar: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            --font-en: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-en);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        img,
+        svg,
+        video,
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        html[lang="ar"] body {
+            font-family: var(--font-ar);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 9999;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .theme-btn {
+            padding: 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 60px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .theme-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-light);
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            z-index: 1;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-theme .theme-btn::before {
+            background: #87ceeb;
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.06);
+        }
+
+        .theme-btn::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-theme .theme-btn::after {
+            left: 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-icon {
+            transition: all 0.4s ease;
+            z-index: 3;
+            position: relative;
+            padding: 0 8px;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-icon svg {
+            width: 16px;
+            height: 16px;
+            transition: all 0.4s ease;
+        }
+
+        .theme-icon:first-child {
+            opacity: 0.3;
+            transform: scale(0.8);
+        }
+
+        .theme-icon:last-child {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        body.light-theme .theme-icon:first-child {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        body.light-theme .theme-icon:last-child {
+            opacity: 0.3;
+            transform: scale(0.8);
+        }
+
+        .theme-icon svg {
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        }
+
+        body.light-theme .theme-icon svg {
+            filter: drop-shadow(0 1px 2px rgba(14, 165, 233, 0.2));
+        }
+
+        .theme-btn:hover::before {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-theme .theme-btn:hover::before {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .theme-btn:active::after {
+            transform: scale(0.9);
+        }
+
+        /* Light theme styles */
+        body.light-theme {
+            --primary-color: #0ea5e9;
+            --secondary-color: #0284c7;
+            --accent-color: #06b6d4;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #fafafa;
+            --bg-white: #ffffff;
+            --card-shadow: 0 10px 30px rgba(14, 165, 233, 0.08);
+            --card-shadow-hover: 0 20px 40px rgba(14, 165, 233, 0.15);
+            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            --gradient-secondary: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+        }
+
+        body.light-theme {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%);
+            min-height: 100vh;
+        }
+
+        body.light-theme .hero-background {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 30%, #7dd3fc 70%, #38bdf8 100%);
+            opacity: 0.6;
+        }
+
+        body.light-theme .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(14, 165, 233, 0.08);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .language-dropdown {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-light);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-dropdown-btn:hover {
+            background: var(--bg-white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .lang-flag {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .lang-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .lang-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            min-width: 180px;
+            overflow: hidden;
+        }
+
+        .lang-dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            text-align: right;
+        }
+
+        .lang-option:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .lang-option:first-child:hover {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .lang-option:last-child:hover {
+            border-radius: 0 0 12px 12px;
+        }
+
+        .lang-name {
+            font-weight: 500;
+        }
+
+        /* RTL support for dropdown */
+        html[dir="rtl"] .lang-dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+
+        html[dir="ltr"] .lang-dropdown-menu {
+            left: 0;
+            right: auto;
+        }
+
+        html[dir="ltr"] .lang-option {
+            text-align: left;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            --image-border-size: 300px;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: var(--image-border-size);
+            height: var(--image-border-size);
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            z-index: 1;
+            animation: rotate-border 20s linear infinite;
+            filter: saturate(1.05);
+            transition: filter 300ms ease;
+            will-change: transform;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: var(--image-border-size);
+            height: var(--image-border-size);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.55) 35%,
+                    rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%) translateX(-120%);
+            mix-blend-mode: soft-light;
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 0;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 2;
+            transition: transform 300ms ease, box-shadow 300ms ease, filter 300ms ease;
+            will-change: transform;
+        }
+
+        .hero-image:hover .profile-img {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+            filter: contrast(1.05) saturate(1.05);
+        }
+
+        .hero-image:hover::before {
+            filter: drop-shadow(0 18px 55px rgba(0, 0, 0, 0.25)) saturate(1.15);
+        }
+
+        .hero-image:hover::after {
+            opacity: 1;
+            animation: shine-sweep 900ms ease-out;
+        }
+
+        .hero-text {
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-title {
+            margin-bottom: 1rem;
+        }
+
+        .greeting {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .name {
+            display: block;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #000000;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            background: #1a1a1a;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: scroll 2s infinite;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .about-summary {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-summary p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--bg-white);
+        }
+
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .experience-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border-right: 4px solid var(--primary-color);
+            position: relative;
+            animation: slideInRight 0.6s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(-10px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .duration {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .card-body p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--bg-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--card-shadow-hover);
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--bg-white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            padding: 1.8rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .project-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 1.8rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .service-card:hover h3 {
+            color: white;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .service-card:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-form-wrapper {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid var(--bg-light);
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(44, 44, 44, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .contact-card.clickable {
+            cursor: pointer;
+        }
+
+        .contact-card.clickable:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .contact-card.clickable:hover h3,
+        .contact-card.clickable:hover p {
+            color: white;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .btn-cv {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-cv:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-cv span {
+            font-size: 1.5rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 8px;
+            left: auto;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes rotate-border {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .name {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-actions {
+                gap: 1rem;
+            }
+
+            .language-toggle {
+                padding: 0.2rem;
+            }
+
+            .lang-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 110px;
+                padding-bottom: 60px;
+            }
+
+            .scroll-indicator {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                margin-top: 28px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+
+            .hero-image {
+                --image-border-size: 220px;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .skills-grid,
+            .projects-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 6px;
+                left: auto;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-img {
+                width: 170px;
+                height: 170px;
+            }
+
+            .hero-image {
+                --image-border-size: 190px;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .scroll-indicator {
+                margin-top: 20px;
+            }
+        }
+
+        /* تحسين مؤشر التمرير للهواتف - تعديلات جديدة */
+        @media (max-width: 768px) {
+            .scroll-indicator {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-top: 0;
+                z-index: 100;
+                animation: bounce 2s infinite;
+            }
+            
+            .scroll-indicator span {
+                width: 26px;
+                height: 42px;
+                border-width: 2px;
+            }
+            
+            .scroll-indicator span::before {
+                content: '';
+                position: absolute;
+                top: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 4px;
+                height: 8px;
+                background: var(--primary-color);
+                border-radius: 2px;
+                animation: scrollMove 2s infinite;
+            }
+            
+            /* تحسين التباعد العام للهاتف */
+            .hero {
+                padding-top: 60px;
+                min-height: 90vh;
+                padding-bottom: 40px;
+            }
+            
+            .hero-content {
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-image {
+                margin: 0 auto;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* تحسينات إضافية للشاشات الصغيرة جداً */
+        @media (max-width: 480px) {
+            .scroll-indicator {
+                bottom: 15px;
+            }
+            
+            .scroll-indicator span {
+                width: 24px;
+                height: 38px;
+            }
+            
+            .hero {
+                padding-bottom: 30px;
+            }
+        }
+
+        /* تحسين حركة المؤشر */
+        @keyframes scrollMove {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            75% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(15px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">أحمد عبداللاه</div>
+            <ul class="nav-menu">
+                <li><a href="#home" id="nav-home" data-ar="الرئيسية" data-en="Home" data-fr="Accueil" data-de="Startseite" data-es="Inicio" data-zh="首页">الرئيسية</a></li>
+                <li><a href="#about" id="nav-about" data-ar="من أنا" data-en="About" data-fr="À propos" data-de="Über mich" data-es="Acerca de" data-zh="关于">من أنا</a></li>
+                <li><a href="#experience" id="nav-experience" data-ar="الخبرات" data-en="Experience" data-fr="Expérience" data-de="Erfahrung" data-es="Experiencia" data-zh="经验">الخبرات</a></li>
+                <li><a href="#skills" id="nav-skills" data-ar="المهارات" data-en="Skills" data-fr="Compétences" data-de="Fähigkeiten" data-es="Habilidades" data-zh="技能">المهارات</a></li>
+                <li><a href="#projects" id="nav-projects" data-ar="الإنجازات" data-en="Projects" data-fr="Projets" data-de="Projekte" data-es="Proyectos" data-zh="项目">الإنجازات</a></li>
+                <li><a href="#services" id="nav-services" data-ar="الخدمات" data-en="Services" data-fr="Services" data-de="Dienstleistungen" data-es="Servicios" data-zh="服务">الخدمات</a></li>
+                <li><a href="#contact" id="nav-contact" data-ar="التواصل" data-en="Contact" data-fr="Contact" data-de="Kontakt" data-es="Contacto" data-zh="联系">التواصل</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="theme-toggle"><button class="theme-btn" id="themeToggle" aria-label="Toggle theme"><span
+                            class="theme-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg></span><span class="theme-icon"><svg width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg></span></button></div>
+                <div class="language-dropdown"><button class="lang-dropdown-btn" id="langDropdownBtn"><span
+                            class="lang-flag" id="currentLangFlag">🇸🇦</span><span class="lang-text"
+                            id="currentLangText">العربية</span><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg></button>
+                    <div class="lang-dropdown-menu" id="langDropdownMenu"><button class="lang-option" data-lang="ar"
+                            data-flag="🇸🇦"><span class="lang-flag">🇸🇦</span><span
+                                class="lang-name">العربية</span></button><button class="lang-option" data-lang="en"
+                            data-flag="🇬🇧"><span class="lang-flag">🇬🇧</span><span
+                                class="lang-name">English</span></button><button class="lang-option" data-lang="fr"
+                            data-flag="🇫🇷"><span class="lang-flag">🇫🇷</span><span
+                                class="lang-name">Français</span></button><button class="lang-option" data-lang="de"
+                            data-flag="🇩🇪"><span class="lang-flag">🇩🇪</span><span
+                                class="lang-name">Deutsch</span></button><button class="lang-option" data-lang="es"
+                            data-flag="🇪🇸"><span class="lang-flag">🇪🇸</span><span
+                                class="lang-name">Español</span></button><button class="lang-option" data-lang="zh"
+                            data-flag="🇨🇳"><span class="lang-flag">🇨🇳</span><span
+                                class="lang-name">中文</span></button></div>
+                </div>
+                <div class="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image"><img src="profile.jpg" alt="أحمد عبداللاه" class="profile-img" id="profile-img"></div>
+                <div class="hero-text">
+                    <h1 class="hero-title"><span class="greeting" id="greeting" data-ar="مرحباً، أنا" data-en="Hi, I'm" data-fr="Bonjour, je suis" data-de="Hallo, ich bin" data-es="Hola, soy" data-zh="你好，我是">مرحباً،
+                            أنا</span><span class="name" id="name">أحمد عبداللاه</span></h1>
+                    <h2 class="hero-subtitle" id="hero-subtitle" data-ar="مهندس برمجيات ومطور ويب ومصمم"
+                        data-en="Software Engineer & Web Developer & Designer" data-fr="Ingénieur logiciel & Développeur web & Designer" data-de="Softwareentwickler & Webentwickler & Designer" data-es="Ingeniero de software & Desarrollador web & Diseñador" data-zh="软件工程师 & 网络开发者 & 设计师">مهندس برمجيات ومطور ويب ومصمم
+                    </h2>
+                    <p class="hero-description" id="hero-description"
+                        data-ar="أساعد الشركات على تحسين التشغيل، وضبط التكاليف، ورفع جودة تجربة العملاء."
+                        data-en="I help companies improve operations, control costs, and enhance customer experience quality."
+                        data-fr="J'aide les entreprises à améliorer leurs opérations, à maîtriser les coûts et à améliorer la qualité de l'expérience client."
+                        data-de="Ich helfe Unternehmen, Abläufe zu verbessern, Kosten zu kontrollieren und die Qualität des Kundenerlebnisses zu steigern."
+                        data-es="Ayudo a las empresas a mejorar las operaciones, controlar costos y mejorar la calidad de la experiencia del cliente."
+                        data-zh="我帮助公司改善运营、控制成本并提升客户体验质量。">
+                        أساعد الشركات على تحسين التشغيل، وضبط التكاليف، ورفع جودة تجربة العملاء. </p>
+                    <div class="hero-buttons"><a href="#contact" class="btn btn-primary" id="contact-btn" data-ar="تواصل معي"
+                            data-en="Contact Me" data-fr="Contactez-moi" data-de="Kontaktieren Sie mich" data-es="Contáctame" data-zh="联系我">تواصل معي</a><a href="#about" class="btn btn-secondary" id="learn-btn"
+                            data-ar="اعرف المزيد" data-en="Learn More" data-fr="En savoir plus" data-de="Erfahren Sie mehr" data-es="Aprende más" data-zh="了解更多">اعرف المزيد</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span></span></div>
+    </section>
+    <!-- About Me Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" id="about-title" data-ar="من أنا" data-en="About Me" data-fr="À propos de moi" data-de="Über mich" data-es="Acerca de mí" data-zh="关于我">من أنا</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg></div>
+                    <h3 id="about-card1-title" data-ar="نبذة عني" data-en="About Me" data-fr="À propos de moi" data-de="Über mich" data-es="Acerca de mí" data-zh="关于我">نبذة عني</h3>
+                    <p id="about-card1-desc" data-ar="أنا مهندس برمجيات ومطور ويب ومصمم، أمتلك خبرة واسعة في تطوير تطبيقات الويب الحديثة والتصاميم الإبداعية."
+                        data-en="I am a software engineer and web developer & designer with extensive experience in building modern web applications and creative designs."
+                        data-fr="Je suis ingénieur logiciel et développeur web & designer avec une vaste expérience dans la création d'applications web modernes et de designs créatifs."
+                        data-de="Ich bin Softwareentwickler und Webentwickler & Designer mit umfangreicher Erfahrung in der Entwicklung moderner Webanwendungen und kreativer Designs."
+                        data-es="Soy ingeniero de software y desarrollador web & diseñador con amplia experiencia en la creación de aplicaciones web modernas y diseños creativos."
+                        data-zh="我是一名软件工程师和网络开发者兼设计师，在构建现代网络应用和创意设计方面拥有丰富经验。">
+                        أنا مهندس برمجيات ومطور ويب ومصمم، أمتلك خبرة واسعة في تطوير تطبيقات الويب
+                        الحديثة والتصاميم الإبداعية. </p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z">
+                            </path>
+                            <path
+                                d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z">
+                            </path>
+                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                        </svg></div>
+                    <h3 id="about-card2-title" data-ar="بداية المسيرة" data-en="Career Start" data-fr="Début de carrière" data-de="Karrierestart" data-es="Inicio de carrera" data-zh="职业开始">بداية المسيرة</h3>
+                    <p id="about-card2-desc" data-ar="بدأت مسيرتي في عالم البرمجة بتعلم لغات الويب الأساسية، ثم تطورت إلى إطار العمل المتقدمة وأصبحت متخصصاً في تطوير تطبيقات Full-Stack."
+                        data-en="I started my programming journey by learning basic web languages, then evolved to advanced frameworks and became a Full-Stack application development specialist."
+                        data-fr="J'ai commencé mon parcours de programmation en apprenant les langages web de base, puis j'ai évolué vers des frameworks avancés et je suis devenu spécialiste du développement d'applications Full-Stack."
+                        data-de="Ich begann meine Programmierreise mit dem Erlernen grundlegender Websprachen, entwickelte mich dann zu fortgeschrittenen Frameworks weiter und wurde Spezialist für Full-Stack-Anwendungsentwicklung."
+                        data-es="Comencé mi viaje de programación aprendiendo lenguajes web básicos, luego evolucioné a marcos avanzados y me convertí en especialista en desarrollo de aplicaciones Full-Stack."
+                        data-zh="我的编程之旅始于学习基础网络语言，然后发展到高级框架，成为全栈应用开发专家。">
+                        بدأت مسيرتي في عالم البرمجة بتعلم لغات الويب الأساسية، ثم تطورت إلى إطار العمل
+                        المتقدمة وأصبحت متخصصاً في تطوير تطبيقات Full-Stack. </p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg></div>
+                    <h3 id="about-card3-title" data-ar="التطور المهني" data-en="Professional Growth" data-fr="Développement professionnel" data-de="Berufliche Entwicklung" data-es="Desarrollo profesional" data-zh="职业发展">التطور المهني</h3>
+                    <p id="about-card3-desc" data-ar="عملت على مشاريع متنوعة من مواقع الشركات الصغيرة إلى التطبيقات المعقدة، مما أكسبني خبرة عميقة في مختلف التقنيات والأدوات الحديثة."
+                        data-en="I worked on diverse projects from small company websites to complex applications, which gave me deep experience in various modern technologies and tools."
+                        data-fr="J'ai travaillé sur divers projets, des sites Web de petites entreprises aux applications complexes, ce qui m'a donné une expérience approfondie de diverses technologies et outils modernes."
+                        data-de="Ich habe an verschiedenen Projekten gearbeitet, von kleinen Unternehmenswebsites bis hin zu komplexen Anwendungen, was mir tiefe Erfahrung mit verschiedenen modernen Technologien und Werkzeugen verschaffte."
+                        data-es="Trabajé en diversos proyectos, desde sitios web de pequeñas empresas hasta aplicaciones complejas, lo que me dio una experiencia profunda en diversas tecnologías y herramientas modernas."
+                        data-zh="我参与过从小型企业网站到复杂应用的各种项目，这让我对各种现代技术和工具有了深刻的经验。">
+                        عملت على مشاريع متنوعة من مواقع الشركات الصغيرة إلى التطبيقات المعقدة، مما
+                        أكسبني خبرة عميقة في مختلف التقنيات والأدوات الحديثة. </p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg></div>
+                    <h3 id="about-card4-title" data-ar="الخبرة الحالية" data-en="Current Experience" data-fr="Expérience actuelle" data-de="Aktuelle Erfahrung" data-es="Experiencia actual" data-zh="当前经验">الخبرة الحالية</h3>
+                    <p id="about-card4-desc" data-ar="أمتلك خبرة متخصصة في تصميم واجهات المستخدم (UI/UX)، تطوير الواجهات الأمامية والخلفية، وإدارة قواعد البيانات والخوادم."
+                        data-en="I have specialized expertise in user interface design (UI/UX), frontend and backend development, and database and server management."
+                        data-fr="J'ai une expertise spécialisée dans la conception d'interfaces utilisateur (UI/UX), le développement frontend et backend, et la gestion de bases de données et de serveurs."
+                        data-de="Ich verfüge über spezialisierte Expertise im User Interface Design (UI/UX), Frontend- und Backend-Entwicklung sowie Datenbank- und Servermanagement."
+                        data-es="Tengo experiencia especializada en diseño de interfaces de usuario (UI/UX), desarrollo frontend y backend, y gestión de bases de datos y servidores."
+                        data-zh="我在用户界面设计（UI/UX）、前端和后端开发以及数据库和服务器管理方面拥有专业专长。">
+                        أمتلك خبرة متخصصة في تصميم واجهات المستخدم (UI/UX)، تطوير الواجهات الأمامية
+                        والخلفية، وإدارة قواعد البيانات والخوادم. </p>
+                </div>
+            </div>
+            <div class="about-summary">
+                <p id="about-summary" data-ar="اليوم أقدم حلولاً برمجية متكاملة تجمع بين الأداء العالي، التصميم الجذاب، وتجربة مستخدم استثنائية."
+                    data-en="Today I offer integrated software solutions that combine high performance, attractive design, and exceptional user experience."
+                    data-fr="Aujourd'hui, je propose des solutions logicielles intégrées qui combinent haute performance, design attrayant et expérience utilisateur exceptionnelle."
+                    data-de="Heute biete ich integrierte Softwarelösungen an, die hohe Leistung, attraktives Design und außergewöhnliche Benutzererfahrung kombinieren."
+                    data-es="Hoy ofrezco soluciones de software integradas que combinan alto rendimiento, diseño atractivo y experiencia de usuario excepcional."
+                    data-zh="今天我提供集成的软件解决方案，结合了高性能、吸引人的设计和卓越的用户体验。">
+                    اليوم أقدم حلولاً برمجية متكاملة تجمع بين الأداء العالي، التصميم الجذاب، وتجربة
+                    مستخدم استثنائية. </p>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title" id="experience-title" data-ar="الخبرات العملية" data-en="Experience" data-fr="Expérience" data-de="Erfahrung" data-es="Experiencia" data-zh="经验">الخبرات العملية
+            </h2>
+            <div class="experience-timeline">
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 id="exp1-title" data-ar="مطور Full-Stack" data-en="Full-Stack Developer" data-fr="Développeur Full-Stack" data-de="Full-Stack-Entwickler" data-es="Desarrollador Full-Stack" data-zh="全栈开发者">مطور Full-Stack
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="exp1-desc" data-ar="تطوير تطبيقات ويب متكاملة باستخدام React و Node.js و MongoDB"
+                            data-en="Developing complete web applications using React, Node.js, and MongoDB"
+                            data-fr="Développement d'applications web complètes avec React, Node.js et MongoDB"
+                            data-de="Entwicklung vollständiger Webanwendungen mit React, Node.js und MongoDB"
+                            data-es="Desarrollo de aplicaciones web completas con React, Node.js y MongoDB"
+                            data-zh="使用 React、Node.js 和 MongoDB 开发完整的网络应用">
+                            تطوير تطبيقات ويب متكاملة باستخدام React و Node.js و MongoDB</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 id="exp2-title" data-ar="مطور واجهات أمامية" data-en="Frontend Developer" data-fr="Développeur Frontend" data-de="Frontend-Entwickler" data-es="Desarrollador Frontend" data-zh="前端开发者">مطور واجهات
+                            أمامية</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="exp2-desc" data-ar="تصميم وتطوير واجهات مستخدم تفاعلية وسريعة الاستجابة"
+                            data-en="Designing and developing interactive and responsive user interfaces"
+                            data-fr="Conception et développement d'interfaces utilisateur interactives et réactives"
+                            data-de="Design und Entwicklung interaktiver und responsiver Benutzeroberflächen"
+                            data-es="Diseño y desarrollo de interfaces de usuario interactivas y receptivas"
+                            data-zh="设计和开发交互式和响应式用户界面">
+                            تصميم وتطوير واجهات مستخدم تفاعلية وسريعة الاستجابة</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 id="exp3-title" data-ar="مصمم UI/UX" data-en="UI/UX Designer" data-fr="Designer UI/UX" data-de="UI/UX-Designer" data-es="Diseñador UI/UX" data-zh="UI/UX设计师">مصمم UI/UX</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="exp3-desc" data-ar="تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء"
+                            data-en="Designing attractive and easy-to-use user experiences with focus on performance"
+                            data-fr="Conception d'expériences utilisateur attrayantes et faciles à utiliser avec un accent sur la performance"
+                            data-de="Gestaltung attraktiver und benutzerfreundlicher Benutzererlebnisse mit Fokus auf Leistung"
+                            data-es="Diseño de experiencias de usuario atractivas y fáciles de usar con enfoque en el rendimiento"
+                            data-zh="设计有吸引力且易于使用的用户体验，注重性能">
+                            تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 id="exp4-title" data-ar="مطور خلفية" data-en="Backend Developer" data-fr="Développeur Backend" data-de="Backend-Entwickler" data-es="Desarrollador Backend" data-zh="后端开发者">مطور خلفية</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="exp4-desc" data-ar="بناء واجهات API قوية وقواعد بيانات محسّنة للأداء"
+                            data-en="Building robust APIs and performance-optimized databases"
+                            data-fr="Construction d'API robustes et de bases de données optimisées pour les performances"
+                            data-de="Aufbau robuster APIs und leistungsoptimierter Datenbanken"
+                            data-es="Construcción de API robustas y bases de datos optimizadas para el rendimiento"
+                            data-zh="构建强大的 API 和性能优化的数据库">بناء
+                            واجهات API قوية وقواعد بيانات محسّنة للأداء</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title" id="skills-title" data-ar="المهارات" data-en="Skills" data-fr="Compétences" data-de="Fähigkeiten" data-es="Habilidades" data-zh="技能">المهارات</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="14" x="2" y="3" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg></div>
+                    <h3 id="skill1" data-ar="تطوير Frontend" data-en="Frontend Development" data-fr="Développement Frontend" data-de="Frontend-Entwicklung" data-es="Desarrollo Frontend" data-zh="前端开发">تطوير Frontend
+                    </h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z">
+                            </path>
+                            <path d="M19 10a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0v-6a3 3 0 0 0-3-3Z">
+                            </path>
+                            <path d="M5 10a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0v-6a3 3 0 0 0-3-3Z">
+                            </path>
+                        </svg></div>
+                    <h3 id="skill2" data-ar="تطوير Backend" data-en="Backend Development" data-fr="Développement Backend" data-de="Backend-Entwicklung" data-es="Desarrollo Backend" data-zh="后端开发">تطوير Backend</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg></div>
+                    <h3 id="skill3" data-ar="تصميم UI/UX" data-en="UI/UX Design" data-fr="Design UI/UX" data-de="UI/UX-Design" data-es="Diseño UI/UX" data-zh="UI/UX设计">تصميم UI/UX</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                            <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                            <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                            <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+                        </svg></div>
+                    <h3 id="skill4" data-ar="تطوير Responsive" data-en="Responsive Design" data-fr="Design Responsive" data-de="Responsive Design" data-es="Diseño Responsive" data-zh="响应式设计">تطوير Responsive
+                    </h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                            <path d="M3 12A9 3 0 0 0 21 12"></path>
+                        </svg></div>
+                    <h3 id="skill5" data-ar="قواعد البيانات" data-en="Database Management" data-fr="Gestion de bases de données" data-de="Datenbankverwaltung" data-es="Gestión de bases de datos" data-zh="数据库管理">قواعد البيانات
+                    </h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg></div>
+                    <h3 id="skill6" data-ar="أداء وتحسين" data-en="Performance Optimization" data-fr="Optimisation des performances" data-de="Leistungsoptimierung" data-es="Optimización de rendimiento" data-zh="性能优化">أداء وتحسين
+                    </h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                            </path>
+                        </svg></div>
+                    <h3 id="skill7" data-ar="JavaScript/TypeScript" data-en="JavaScript/TypeScript" data-fr="JavaScript/TypeScript" data-de="JavaScript/TypeScript" data-es="JavaScript/TypeScript" data-zh="JavaScript/TypeScript">
+                        JavaScript/TypeScript</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <circle cx="19" cy="5" r="2"></circle>
+                            <circle cx="5" cy="19" r="2"></circle>
+                            <path d="M12 2v4"></path>
+                            <path d="M12 18v4"></path>
+                            <path d="M4.93 4.93l2.83 2.83"></path>
+                            <path d="M16.24 16.24l2.83 2.83"></path>
+                            <path d="M2 12h4"></path>
+                            <path d="M18 12h4"></path>
+                            <path d="M4.93 19.07l2.83-2.83"></path>
+                            <path d="M16.24 7.76l2.83-2.83"></path>
+                        </svg></div>
+                    <h3 id="skill8" data-ar="React.js" data-en="React.js" data-fr="React.js" data-de="React.js" data-es="React.js" data-zh="React.js">React.js</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg></div>
+                    <h3 id="skill9" data-ar="Node.js" data-en="Node.js" data-fr="Node.js" data-de="Node.js" data-es="Node.js" data-zh="Node.js">Node.js</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                            </path>
+                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                        </svg></div>
+                    <h3 id="skill10" data-ar="Git/GitHub" data-en="Git/GitHub" data-fr="Git/GitHub" data-de="Git/GitHub" data-es="Git/GitHub" data-zh="Git/GitHub">Git/GitHub</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg></div>
+                    <h3 id="skill11" data-ar="APIs" data-en="API Development" data-fr="Développement d'API" data-de="API-Entwicklung" data-es="Desarrollo de API" data-zh="API开发">APIs</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                            <path d="M2 2l7.586 7.586"></path>
+                            <circle cx="11" cy="11" r="2"></circle>
+                        </svg></div>
+                    <h3 id="skill12" data-ar="CSS/SASS" data-en="CSS/SASS" data-fr="CSS/SASS" data-de="CSS/SASS" data-es="CSS/SASS" data-zh="CSS/SASS">CSS/SASS</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title" id="projects-title" data-ar="الإنجازات" data-en="Projects / Achievements" data-fr="Projets / Réalisations" data-de="Projekte / Erfolge" data-es="Proyectos / Logros" data-zh="项目 / 成就">
+                الإنجازات</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                            </path>
+                        </svg></div>
+                    <h3 id="project1-title" data-ar="تطبيق ويب للتجارة الإلكترونية" data-en="E-commerce Web Application" data-fr="Application Web E-commerce" data-de="E-Commerce-Webanwendung" data-es="Aplicación Web de Comercio Electrónico" data-zh="电子商务网络应用">
+                        تطبيق ويب للتجارة الإلكترونية
+                    </h3>
+                    <p id="project1-desc" data-ar="تطوير متجر إلكتروني كامل بواجهة مستخدم حديثة وإدارة سلة التسوق"
+                        data-en="Developed a complete e-commerce store with modern user interface and shopping cart management"
+                        data-fr="Développement d'une boutique e-commerce complète avec interface utilisateur moderne et gestion de panier"
+                        data-de="Entwicklung eines vollständigen E-Commerce-Shops mit moderner Benutzeroberfläche und Warenkorbverwaltung"
+                        data-es="Desarrollo de una tienda de comercio electrónico completa con interfaz de usuario moderna y gestión de carrito de compras"
+                        data-zh="开发了一个完整的电子商务商店，具有现代用户界面和购物车管理">
+                        تطوير متجر إلكتروني كامل بواجهة مستخدم حديثة وإدارة سلة التسوق</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                            <path d="M12 18h.01"></path>
+                        </svg></div>
+                    <h3 id="project2-title" data-ar="تطبيق موبايل للتعلم الإلكتروني" data-en="Mobile E-learning App" data-fr="Application Mobile E-learning" data-de="Mobile E-Learning-App" data-es="Aplicación Móvil de E-learning" data-zh="移动电子学习应用">
+                        تطبيق موبايل للتعلم الإلكتروني</h3>
+                    <p id="project2-desc" data-ar="تصميم وتطوير تطبيق موبايل تفاعلي للدروس والاختبارات"
+                        data-en="Designed and developed an interactive mobile app for lessons and tests"
+                        data-fr="Conception et développement d'une application mobile interactive pour les leçons et les tests"
+                        data-de="Design und Entwicklung einer interaktiven mobilen App für Lektionen und Tests"
+                        data-es="Diseño y desarrollo de una aplicación móvil interactiva para lecciones y pruebas"
+                        data-zh="设计和开发了一个用于课程和测试的交互式移动应用">
+                        تصميم وتطوير تطبيق موبايل تفاعلي للدروس والاختبارات</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                            <path
+                                d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.01 17.461 2 12 2z">
+                            </path>
+                        </svg></div>
+                    <h3 id="project3-title" data-ar="منصة تصميم واجهات المستخدم" data-en="UI Design Platform" data-fr="Plateforme de Design UI" data-de="UI-Design-Plattform" data-es="Plataforma de Diseño UI" data-zh="UI设计平台">
+                        منصة تصميم واجهات المستخدم </h3>
+                    <p id="project3-desc" data-ar="بناء أداة عبر الإنترنت لمصممي الواجهات مع مكتبة مكونات جاهزة"
+                        data-en="Built an online tool for UI designers with ready-made component library"
+                        data-fr="Construction d'un outil en ligne pour les designers UI avec une bibliothèque de composants prêts à l'emploi"
+                        data-de="Aufbau eines Online-Tools für UI-Designer mit vorgefertigter Komponentenbibliothek"
+                        data-es="Construcción de una herramienta en línea para diseñadores de UI con biblioteca de componentes listos"
+                        data-zh="为UI设计师构建了一个在线工具，带有现成的组件库">
+                        بناء أداة عبر الإنترنت لمصممي الواجهات مع مكتبة مكونات جاهزة</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                            </path>
+                            <path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z">
+                            </path>
+                            <path d="M12 11h4"></path>
+                            <path d="M12 16h4"></path>
+                            <path d="M8 11h.01"></path>
+                            <path d="M8 16h.01"></path>
+                        </svg></div>
+                    <h3 id="project4-title" data-ar="نظام إدارة المشاريع" data-en="Project Management System" data-fr="Système de Gestion de Projet" data-de="Projektmanagementsystem" data-es="Sistema de Gestión de Proyectos" data-zh="项目管理系统">
+                        نظام إدارة المشاريع</h3>
+                    <p id="project4-desc" data-ar="تطوير نظام متكامل لإدارة المشاريع والمهام والتقارير"
+                        data-en="Developed an integrated system for project, task, and report management"
+                        data-fr="Développement d'un système intégré de gestion de projet, de tâches et de rapports"
+                        data-de="Entwicklung eines integrierten Systems für Projekt-, Aufgaben- und Berichtsmanagement"
+                        data-es="Desarrollo de un sistema integrado para gestión de proyectos, tareas e informes"
+                        data-zh="开发了一个集成的项目、任务和报告管理系统">
+                        تطوير نظام متكامل لإدارة المشاريع والمهام والتقارير</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12V7a2 2 0 0 0-2-2h-2l-2 2h-3l-2-2H5a2 2 0 0 0-2 2v5">
+                            </path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7"></path>
+                            <path d="M3 12h18"></path>
+                        </svg></div>
+                    <h3 id="project5-title" data-ar="واجهة برمجة APIs" data-en="API Dashboard" data-fr="Tableau de Bord API" data-de="API-Dashboard" data-es="Panel de Control de API" data-zh="API仪表板">واجهة برمجة APIs
+                    </h3>
+                    <p id="project5-desc" data-ar="بناء لوحة تحكم تفاعلية لإدارة ومراقبة واجهات برمجة التطبيقات"
+                        data-en="Built an interactive control dashboard for managing and monitoring application APIs"
+                        data-fr="Construction d'un tableau de bord interactif pour gérer et surveiller les API d'applications"
+                        data-de="Aufbau eines interaktiven Kontroll-Dashboards zur Verwaltung und Überwachung von Anwendungs-APIs"
+                        data-es="Construcción de un panel de control interactivo para gestionar y monitorear APIs de aplicaciones"
+                        data-zh="构建了一个用于管理和监控应用程序API的交互式控制仪表板">
+                        بناء لوحة تحكم تفاعلية لإدارة ومراقبة واجهات برمجة التطبيقات</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="6" x2="10" y1="12" y2="12"></line>
+                            <line x1="8" x2="8" y1="10" y2="14"></line>
+                            <line x1="15" x2="15.01" y1="13" y2="13"></line>
+                            <line x1="18" x2="18.01" y1="11" y2="11"></line>
+                            <rect width="20" height="12" x="2" y="6" rx="2"></rect>
+                        </svg></div>
+                    <h3 id="project6-title" data-ar="لعبة ويب تفاعلية" data-en="Interactive Web Game" data-fr="Jeu Web Interactif" data-de="Interaktives Webspiel" data-es="Juego Web Interactivo" data-zh="互动网络游戏">لعبة ويب
+                        تفاعلية</h3>
+                    <p id="project6-desc" data-ar="تطوير لعبة متعددة اللاعبين باستخدام WebSocket و Canvas"
+                        data-en="Developed a multiplayer game using WebSocket and Canvas"
+                        data-fr="Développement d'un jeu multijoueur utilisant WebSocket et Canvas"
+                        data-de="Entwicklung eines Mehrspieler-Spiels mit WebSocket und Canvas"
+                        data-es="Desarrollo de un juego multijugador usando WebSocket y Canvas"
+                        data-zh="使用 WebSocket 和 Canvas 开发了一个多人游戏">
+                        تطوير لعبة متعددة اللاعبين باستخدام WebSocket و Canvas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title" id="services-title" data-ar="الخدمات" data-en="Services" data-fr="Services" data-de="Dienstleistungen" data-es="Servicios" data-zh="服务">الخدمات</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="14" x="2" y="3" rx="2" ry="2">
+                            </rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg></div>
+                    <h3 id="service1-title" data-ar="تطوير تطبيقات الويب" data-en="Web Application Development" data-fr="Développement d'applications Web" data-de="Webanwendungsentwicklung" data-es="Desarrollo de aplicaciones web" data-zh="网络应用开发">
+                        تطوير تطبيقات الويب</h3>
+                    <p id="service1-desc" data-ar="بناء تطبيقات ويب حديثة ومتجاوبة باستخدام أحدث التقنيات"
+                        data-en="Building modern and responsive web applications using the latest technologies"
+                        data-fr="Construction d'applications web modernes et réactives utilisant les dernières technologies"
+                        data-de="Aufbau moderner und responsiver Webanwendungen mit den neuesten Technologien"
+                        data-es="Construcción de aplicaciones web modernas y receptivas utilizando las últimas tecnologías"
+                        data-zh="使用最新技术构建现代和响应式网络应用">
+                        بناء تطبيقات ويب حديثة ومتجاوبة باستخدام أحدث التقنيات</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                            <path d="M2 2l7.586 7.586"></path>
+                            <circle cx="11" cy="11" r="2"></circle>
+                        </svg></div>
+                    <h3 id="service2-title" data-ar="تصميم واجهات المستخدم" data-en="UI/UX Design" data-fr="Design UI/UX" data-de="UI/UX-Design" data-es="Diseño UI/UX" data-zh="UI/UX设计">تصميم
+                        واجهات المستخدم</h3>
+                    <p id="service2-desc" data-ar="تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء"
+                        data-en="Designing attractive and easy-to-use user experiences with focus on performance"
+                        data-fr="Conception d'expériences utilisateur attrayantes et faciles à utiliser avec un accent sur la performance"
+                        data-de="Gestaltung attraktiver und benutzerfreundlicher Benutzererlebnisse mit Fokus auf Leistung"
+                        data-es="Diseño de experiencias de usuario atractivas y fáciles de usar con enfoque en el rendimiento"
+                        data-zh="设计有吸引力且易于使用的用户体验，注重性能">
+                        تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="14" height="20" x="5" y="2" rx="2" ry="2">
+                            </rect>
+                            <path d="M12 18h.01"></path>
+                        </svg></div>
+                    <h3 id="service3-title" data-ar="تطوير تطبيقات الموبايل" data-en="Mobile App Development" data-fr="Développement d'applications mobiles" data-de="Mobile App-Entwicklung" data-es="Desarrollo de aplicaciones móviles" data-zh="移动应用开发">تطوير
+                        تطبيقات الموبايل</h3>
+                    <p id="service3-desc" data-ar="تطوير تطبيقات موبايل أصلية لـ iOS و Android"
+                        data-en="Developing native mobile applications for iOS and Android"
+                        data-fr="Développement d'applications mobiles natives pour iOS et Android"
+                        data-de="Entwicklung nativer mobiler Anwendungen für iOS und Android"
+                        data-es="Desarrollo de aplicaciones móviles nativas para iOS y Android"
+                        data-zh="为 iOS 和 Android 开发原生移动应用">
+                        تطوير تطبيقات موبايل أصلية لـ iOS و Android</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg></div>
+                    <h3 id="service4-title" data-ar="تحسين الأداء و SEO" data-en="Performance Optimization & SEO" data-fr="Optimisation des performances et SEO" data-de="Leistungsoptimierung & SEO" data-es="Optimización de rendimiento y SEO" data-zh="性能优化和搜索引擎优化">
+                        تحسين الأداء و SEO</h3>
+                    <p id="service4-desc" data-ar="تحسين سرعة المواقع وتصميمها لمحركات البحث"
+                        data-en="Optimizing website speed and designing for search engines"
+                        data-fr="Optimisation de la vitesse du site web et conception pour les moteurs de recherche"
+                        data-de="Optimierung der Website-Geschwindigkeit und Design für Suchmaschinen"
+                        data-es="Optimización de la velocidad del sitio web y diseño para motores de búsqueda"
+                        data-zh="优化网站速度并为搜索引擎设计">
+                        تحسين سرعة المواقع وتصميمها لمحركات البحث</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                            <path d="M3 12A9 3 0 0 0 21 12"></path>
+                        </svg></div>
+                    <h3 id="service5-title" data-ar="قواعد البيانات والـ APIs" data-en="Database & API Development" data-fr="Développement de bases de données et d'API" data-de="Datenbank- und API-Entwicklung" data-es="Desarrollo de bases de datos y API" data-zh="数据库和API开发">
+                        قواعد البيانات والـ APIs
+                    </h3>
+                    <p id="service5-desc" data-ar="تصميم قواعد بيانات قوية وواجهات برمجة آمنة"
+                        data-en="Designing robust databases and secure programming interfaces"
+                        data-fr="Conception de bases de données robustes et d'interfaces de programmation sécurisées"
+                        data-de="Design robuster Datenbanken und sicherer Programmierschnittstellen"
+                        data-es="Diseño de bases de datos robustas e interfaces de programación seguras"
+                        data-zh="设计强大的数据库和安全的编程接口">
+                        تصميم قواعد بيانات قوية وواجهات برمجة آمنة</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                            </path>
+                        </svg></div>
+                    <h3 id="service6-title" data-ar="صيانة ودعم فني" data-en="Maintenance & Technical Support" data-fr="Maintenance et support technique" data-de="Wartung und technischer Support" data-es="Mantenimiento y soporte técnico" data-zh="维护和技术支持">صيانة
+                        ودعم فني</h3>
+                    <p id="service6-desc" data-ar="تقديم الدعم الفني المستمر وصيانة الأنظمة"
+                        data-en="Providing ongoing technical support and system maintenance"
+                        data-fr="Fourniture de support technique continu et de maintenance des systèmes"
+                        data-de="Bereitstellung von fortlaufendem technischem Support und Systemwartung"
+                        data-es="Proporcionar soporte técnico continuo y mantenimiento de sistemas"
+                        data-zh="提供持续的技术支持和系统维护">
+                        تقديم الدعم الفني المستمر وصيانة الأنظمة</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg></div>
+                    <h3 id="service7-title" data-ar="استشارات برمجية" data-en="Software Consulting" data-fr="Consultation logicielle" data-de="Softwareberatung" data-es="Consultoría de software" data-zh="软件咨询">استشارات
+                        برمجية</h3>
+                    <p id="service7-desc" data-ar="تقديم استشارات متخصصة في اختيار التقنيات وتصميم الأنظمة"
+                        data-en="Providing specialized consulting in technology selection and system design"
+                        data-fr="Fourniture de conseils spécialisés dans le choix des technologies et la conception de systèmes"
+                        data-de="Bereitstellung spezialisierter Beratung bei der Technologieauswahl und Systemdesign"
+                        data-es="Proporcionar consultoría especializada en selección de tecnologías y diseño de sistemas"
+                        data-zh="提供技术选择和系统设计方面的专业咨询">
+                        تقديم استشارات متخصصة في اختيار التقنيات وتصميم الأنظمة</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <circle cx="19" cy="5" r="2"></circle>
+                            <circle cx="5" cy="19" r="2"></circle>
+                            <path d="M12 2v4"></path>
+                            <path d="M12 18v4"></path>
+                            <path d="M4.93 4.93l2.83 2.83"></path>
+                            <path d="M16.24 16.24l2.83 2.83"></path>
+                            <path d="M2 12h4"></path>
+                            <path d="M18 12h4"></path>
+                            <path d="M4.93 19.07l2.83-2.83"></path>
+                            <path d="M16.24 7.76l2.83-2.83"></path>
+                        </svg></div>
+                    <h3 id="service8-title" data-ar="تطوير React.js" data-en="React.js Development" data-fr="Développement React.js" data-de="React.js-Entwicklung" data-es="Desarrollo React.js" data-zh="React.js开发">تطوير
+                        React.js</h3>
+                    <p id="service8-desc" data-ar="بناء تطبيقات React حديثة مع Hooks و Context API"
+                        data-en="Building modern React applications with Hooks and Context API"
+                        data-fr="Construction d'applications React modernes avec Hooks et Context API"
+                        data-de="Aufbau moderner React-Anwendungen mit Hooks und Context API"
+                        data-es="Construcción de aplicaciones React modernas con Hooks y Context API"
+                        data-zh="使用 Hooks 和 Context API 构建现代 React 应用">
+                        بناء تطبيقات React حديثة مع Hooks و Context API</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z">
+                            </path>
+                            <path d="M19 10a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0v-6a3 3 0 0 0-3-3Z">
+                            </path>
+                            <path d="M5 10a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0v-6a3 3 0 0 0-3-3Z">
+                            </path>
+                        </svg></div>
+                    <h3 id="service9-title" data-ar="تطوير Full-Stack" data-en="Full-Stack Development" data-fr="Développement Full-Stack" data-de="Full-Stack-Entwicklung" data-es="Desarrollo Full-Stack" data-zh="全栈开发">
+                        تطوير Full-Stack</h3>
+                    <p id="service9-desc" data-ar="تطوير كامل التطبيق من الواجهة الأمامية للخلفية وقاعدة البيانات"
+                        data-en="Developing complete applications from frontend to backend and database"
+                        data-fr="Développement d'applications complètes du frontend au backend et à la base de données"
+                        data-de="Entwicklung kompletter Anwendungen vom Frontend bis zum Backend und zur Datenbank"
+                        data-es="Desarrollo de aplicaciones completas desde el frontend hasta el backend y la base de datos"
+                        data-zh="开发从前端到后端和数据库的完整应用">
+                        تطوير كامل التطبيق من الواجهة الأمامية للخلفية وقاعدة البيانات
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" id="contact-title" data-ar="تواصل معي" data-en="Contact" data-fr="Contact" data-de="Kontakt" data-es="Contacto" data-zh="联系">تواصل
+                معي</h2>
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <!-- Include Forminit SDK -->
+                    <script src="https://forminit.com/sdk/v1/forminit.js"></script>
+                    <form class="contact-form" id="contactForm"><input type="hidden" name="_subject"
+                            value="رسالة جديدة من موقع Portfolio">
+                        <div class="form-group"><label for="name" data-ar="الاسم" data-en="Name" data-fr="Nom" data-de="Name" data-es="Nombre" data-zh="姓名">الاسم</label><input
+                                type="text" id="name" name="fi-sender-firstName" required="" placeholder=""
+                                data-ar="أدخل اسمك" data-en="Enter your name" data-fr="Entrez votre nom" data-de="Geben Sie Ihren Namen ein" data-es="Ingrese su nombre" data-zh="输入您的姓名"></div>
+                        <div class="form-group"><label for="email" data-ar="البريد الإلكتروني" data-en="Email" data-fr="Email" data-de="E-Mail" data-es="Correo electrónico" data-zh="电子邮件">البريد
+                                الإلكتروني</label><input type="email" id="email" name="fi-sender-email" required=""
+                                placeholder="" data-ar="أدخل بريدك الإلكتروني" data-en="Enter your email" data-fr="Entrez votre email" data-de="Geben Sie Ihre E-Mail ein" data-es="Ingrese su correo electrónico" data-zh="输入您的电子邮件">
+                        </div>
+                        <div class="form-group"><label for="subject" data-ar="الموضوع"
+                                data-en="Subject" data-fr="Sujet" data-de="Betreff" data-es="Asunto" data-zh="主题">الموضوع</label><input type="text" id="subject" name="fi-text-subject"
+                                required="" placeholder="" data-ar="أدخل موضوع الرسالة" data-en="Enter subject" data-fr="Entrez le sujet" data-de="Geben Sie den Betreff ein" data-es="Ingrese el asunto" data-zh="输入主题"></div>
+                        <div class="form-group"><label for="message" data-ar="الرسالة"
+                                data-en="Message" data-fr="Message" data-de="Nachricht" data-es="Mensaje" data-zh="消息">الرسالة</label><textarea id="message" name="fi-text-message" rows="5"
+                                required="" placeholder="" data-ar="أدخل رسالتك"
+                                data-en="Enter your message" data-fr="Entrez votre message" data-de="Geben Sie Ihre Nachricht ein" data-es="Ingrese su mensaje" data-zh="输入您的消息"></textarea></div>
+                        <button type="submit" class="btn btn-primary" id="submit-btn" data-ar="إرسال الرسالة"
+                            data-en="Send Message" data-fr="Envoyer le message" data-de="Nachricht senden" data-es="Enviar mensaje" data-zh="发送消息">إرسال
+                            الرسالة</button>
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+                <div class="contact-info"><a href="mailto:ahmedabdellah310@gmail.com" class="contact-card clickable">
+                        <div class="contact-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2">
+                                </rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7">
+                                </path>
+                            </svg></div>
+                        <h3 data-ar="جيميل" data-en="Gmail" data-fr="Gmail" data-de="Gmail" data-es="Gmail" data-zh="Gmail">جيميل</h3>
+                        <p>ahmedabdellah310@gmail.com</p>
+                    </a><a href="https://t.me/ahmedabdellah_310" target="_blank" class="contact-card clickable">
+                        <div class="contact-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m22 2-7 20-4-9-9-4 20-7z"></path>
+                            </svg></div>
+                        <h3 data-ar="تيليجرام" data-en="Telegram" data-fr="Telegram" data-de="Telegram" data-es="Telegram" data-zh="Telegram">تيليجرام</h3>
+                        <p>t.me/ahmedabdellah_310</p>
+                    </a></div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p id="footer-text" data-ar="&copy; 2026 أحمد عبداللاه. جميع الحقوق محفوظة."
+                data-en="&copy; 2026 Ahmed Abdellah. All rights reserved."
+                data-fr="&copy; 2026 Ahmed Abdellah. Tous droits réservés."
+                data-de="&copy; 2026 Ahmed Abdellah. Alle Rechte vorbehalten."
+                data-es="&copy; 2026 Ahmed Abdellah. Todos los derechos reservados."
+                data-zh="&copy; 2026 艾哈迈德·阿卜杜拉。版权所有。">
+                &copy;
+                2026 أحمد عبداللاه. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <!-- Back to Top Button --><button type="button" class="back-to-top" id="backToTop" aria-label="Back to top"><svg
+            width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"></path>
+        </svg></button>
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar Background on Scroll
+        const navbar = document.querySelector('.navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+            }
+
+            else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        }
+
+            ;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }
+
+            , observerOptions);
+
+        // Observe all cards and sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToAnimate = document.querySelectorAll('.about-card, .experience-card, .skill-card, .project-card, .service-card, .contact-card, .about-summary'
+            );
+
+            elementsToAnimate.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+        });
+
+        // Add stagger animation delay
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.about-card, .skill-card, .project-card, .service-card');
+
+            cards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Active Navigation Link
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Typing Effect for Hero Title (Optional Enhancement)
+        const typingEffect = () => {
+            const nameElement = document.querySelector('.name');
+
+            if (nameElement) {
+                const text = nameElement.textContent;
+                nameElement.textContent = '';
+                let i = 0;
+
+                const type = () => {
+                    if (i < text.length) {
+                        nameElement.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, 100);
+                    }
+                }
+
+                    ;
+
+                setTimeout(type, 500);
+            }
+        }
+
+            ;
+
+        // Run typing effect on load
+        window.addEventListener('load', () => {
+            setTimeout(typingEffect, 300);
+        });
+
+        // Parallax Effect for Hero Section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+            }
+        });
+
+        // Add hover effect to skill cards
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }
+
+                    , 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+
+        style.textContent = ` .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        `;
+        document.head.appendChild(style);
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcons = document.querySelectorAll('.theme-icon');
+
+        const toggleTheme = () => {
+            const body = document.body;
+            const isLightTheme = body.classList.contains('light-theme');
+
+            if (isLightTheme) {
+                body.classList.remove('light-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+
+            else {
+                body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+            ;
+
+        // Initialize theme
+        const initializeTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                document.body.classList.add('light-theme');
+            }
+        }
+
+            ;
+
+        // Add event listener
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+
+        // Initialize on DOM load
+
+        // Language Toggle
+        let currentLang = 'ar';
+
+        // Language translations
+        const translations = {
+            ar: {
+                greeting: 'مرحباً، أنا',
+                heroSubtitle: 'مهندس برمجيات ومطور ويب ومصمم',
+                heroDescription: 'أساعد الشركات على تحسين التشغيل، وضبط التكاليف، ورفع جودة تجربة العملاء.',
+                navBrand: 'أحمد عبداللاه',
+                name: 'أحمد عبداللاه',
+                contactMe: 'تواصل معي',
+                learnMore: 'اعرف المزيد',
+                home: 'الرئيسية',
+                about: 'من أنا',
+                experience: 'الخبرات',
+                skills: 'المهارات',
+                projects: 'الإنجازات',
+                services: 'الخدمات',
+                contact: 'التواصل',
+                aboutMe: 'من أنا',
+                experienceTitle: 'الخبرات العملية',
+                skillsTitle: 'المهارات',
+                projectsTitle: 'الإنجازات',
+                servicesTitle: 'الخدمات',
+                contactTitle: 'تواصل معي',
+                aboutCard1: 'نبذة عني',
+                aboutCard2: 'بداية المسيرة',
+                aboutCard3: 'التطور المهني',
+                aboutCard4: 'الخبرة الحالية',
+                aboutSummary: 'اليوم أقدم حلولاً برمجية متكاملة تجمع بين الأداء العالي، التصميم الجذاب، وتجربة مستخدم استثنائية.',
+                exp1Title: 'مطور Full-Stack',
+                exp1Desc: 'تطوير تطبيقات ويب متكاملة باستخدام React و Node.js و MongoDB',
+                exp2Title: 'مطور واجهات أمامية',
+                exp2Desc: 'تصميم وتطوير واجهات مستخدم تفاعلية وسريعة الاستجابة',
+                exp3Title: 'مصمم UI/UX',
+                exp3Desc: 'تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء',
+                exp4Title: 'مطور خلفية',
+                exp4Desc: 'بناء واجهات API قوية وقواعد بيانات محسّنة للأداء',
+                skill1: 'تطوير Frontend',
+                skill2: 'تطوير Backend',
+                skill3: 'تصميم UI/UX',
+                skill4: 'تطوير Responsive',
+                skill5: 'قواعد البيانات',
+                skill6: 'أداء وتحسين',
+                skill7: 'JavaScript/TypeScript',
+                skill8: 'React.js',
+                skill9: 'Node.js',
+                skill10: 'Git/GitHub',
+                skill11: 'APIs',
+                skill12: 'CSS/SASS',
+                project1Title: 'تطبيق ويب للتجارة الإلكترونية',
+                project1Desc: 'تطوير متجر إلكتروني كامل بواجهة مستخدم حديثة وإدارة سلة التسوق',
+                project2Title: 'تطبيق موبايل للتعلم الإلكتروني',
+                project2Desc: 'تصميم وتطوير تطبيق موبايل تفاعلي للدروس والاختبارات',
+                project3Title: 'منصة تصميم واجهات المستخدم',
+                project3Desc: 'بناء أداة عبر الإنترنت لمصممي الواجهات مع مكتبة مكونات جاهزة',
+                project4Title: 'نظام إدارة المشاريع',
+                project4Desc: 'تطوير نظام متكامل لإدارة المشاريع والمهام والتقارير',
+                project5Title: 'واجهة برمجة APIs',
+                project5Desc: 'بناء لوحة تحكم تفاعلية لإدارة ومراقبة واجهات برمجة التطبيقات',
+                project6Title: 'لعبة ويب تفاعلية',
+                project6Desc: 'تطوير لعبة متعددة اللاعبين باستخدام WebSocket و Canvas',
+                service1Title: 'تطوير تطبيقات الويب',
+                service1Desc: 'بناء تطبيقات ويب حديثة ومتجاوبة باستخدام أحدث التقنيات',
+                service2Title: 'تصميم واجهات المستخدم',
+                service2Desc: 'تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء',
+                service3Title: 'تطوير تطبيقات الموبايل',
+                service3Desc: 'تطوير تطبيقات موبايل أصلية لـ iOS و Android',
+                service4Title: 'تحسين الأداء و SEO',
+                service4Desc: 'تحسين سرعة المواقع وتصميمها لمحركات البحث',
+                service5Title: 'قواعد البيانات والـ APIs',
+                service5Desc: 'تصميم قواعد بيانات قوية وواجهات برمجة آمنة',
+                service6Title: 'صيانة ودعم فني',
+                service6Desc: 'تقديم الدعم الفني المستمر وصيانة الأنظمة',
+                service7Title: 'استشارات برمجية',
+                service7Desc: 'تقديم استشارات متخصصة في اختيار التقنيات وتصميم الأنظمة',
+                service8Title: 'تطوير React.js',
+                service8Desc: 'بناء تطبيقات React حديثة مع Hooks و Context API',
+                service9Title: 'تطوير Full-Stack',
+                service9Desc: 'تطوير كامل التطبيق من الواجهة الأمامية للخلفية وقاعدة البيانات',
+                formName: 'الاسم',
+                formEmail: 'البريد الإلكتروني',
+                formSubject: 'الموضوع',
+                formMessage: 'الرسالة',
+                formSubmit: 'إرسال الرسالة',
+                formSending: 'جاري الإرسال...',
+                formSuccess: 'شكراً لك! تم إرسال رسالتك بنجاح',
+                formError: 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى',
+                formValidationError: 'يرجى ملء جميع الحقول',
+                formEmailError: 'يرجى إدخال بريد إلكتروني صحيح',
+                footerText: '&copy; 2026 أحمد عبداللاه. جميع الحقوق محفوظة.',
+                gmail: 'جيميل',
+                telegram: 'تيليجرام'
+            },
+            en: {
+                greeting: 'Hi, I\'m',
+                heroSubtitle: 'Software Engineer & Web Developer & Designer',
+                heroDescription: 'I help companies improve operations, control costs, and enhance customer experience quality.',
+                navBrand: 'Ahmed Abdellah',
+                name: 'Ahmed Abdellah',
+                contactMe: 'Contact Me',
+                learnMore: 'Learn More',
+                home: 'Home',
+                about: 'About',
+                experience: 'Experience',
+                skills: 'Skills',
+                projects: 'Projects',
+                services: 'Services',
+                contact: 'Contact',
+                aboutMe: 'About Me',
+                experienceTitle: 'Experience',
+                skillsTitle: 'Skills',
+                projectsTitle: 'Projects / Achievements',
+                servicesTitle: 'Services',
+                contactTitle: 'Contact Me',
+                aboutCard1: 'About Me',
+                aboutCard2: 'Career Start',
+                aboutCard3: 'Professional Growth',
+                aboutCard4: 'Current Experience',
+                aboutSummary: 'Today I offer integrated software solutions that combine high performance, attractive design, and exceptional user experience.',
+                exp1Title: 'Full-Stack Developer',
+                exp1Desc: 'Developing complete web applications using React, Node.js, and MongoDB',
+                exp2Title: 'Frontend Developer',
+                exp2Desc: 'Designing and developing interactive and responsive user interfaces',
+                exp3Title: 'UI/UX Designer',
+                exp3Desc: 'Designing attractive and easy-to-use user experiences with focus on performance',
+                exp4Title: 'Backend Developer',
+                exp4Desc: 'Building robust APIs and performance-optimized databases',
+                skill1: 'Frontend Development',
+                skill2: 'Backend Development',
+                skill3: 'UI/UX Design',
+                skill4: 'Responsive Design',
+                skill5: 'Database Management',
+                skill6: 'Performance Optimization',
+                skill7: 'JavaScript/TypeScript',
+                skill8: 'React.js',
+                skill9: 'Node.js',
+                skill10: 'Git/GitHub',
+                skill11: 'APIs',
+                skill12: 'CSS/SASS',
+                project1Title: 'E-commerce Web Application',
+                project1Desc: 'Developed a complete e-commerce store with modern user interface and shopping cart management',
+                project2Title: 'Mobile E-learning App',
+                project2Desc: 'Designed and developed an interactive mobile app for lessons and tests',
+                project3Title: 'UI Design Platform',
+                project3Desc: 'Built an online tool for UI designers with ready-made component library',
+                project4Title: 'Project Management System',
+                project4Desc: 'Developed an integrated system for project, task, and report management',
+                project5Title: 'API Dashboard',
+                project5Desc: 'Built an interactive control dashboard for managing and monitoring application APIs',
+                project6Title: 'Interactive Web Game',
+                project6Desc: 'Developed a multiplayer game using WebSocket and Canvas',
+                service1Title: 'Web Application Development',
+                service1Desc: 'Building modern and responsive web applications using the latest technologies',
+                service2Title: 'UI/UX Design',
+                service2Desc: 'Designing attractive and easy-to-use user experiences with focus on performance',
+                service3Title: 'Mobile App Development',
+                service3Desc: 'Developing native mobile applications for iOS and Android',
+                service4Title: 'Performance Optimization & SEO',
+                service4Desc: 'Optimizing website speed and designing for search engines',
+                service5Title: 'Database & API Development',
+                service5Desc: 'Designing robust databases and secure programming interfaces',
+                service6Title: 'Maintenance & Technical Support',
+                service6Desc: 'Providing ongoing technical support and system maintenance',
+                service7Title: 'Software Consulting',
+                service7Desc: 'Providing specialized consulting in technology selection and system design',
+                service8Title: 'React.js Development',
+                service8Desc: 'Building modern React applications with Hooks and Context API',
+                service9Title: 'Full-Stack Development',
+                service9Desc: 'Developing complete applications from frontend to backend and database',
+                formName: 'Name',
+                formEmail: 'Email',
+                formSubject: 'Subject',
+                formMessage: 'Message',
+                formSubmit: 'Send Message',
+                formSending: 'Sending...',
+                formSuccess: 'Thank you! Your message has been sent successfully',
+                formError: 'An error occurred while sending. Please try again',
+                formValidationError: 'Please fill all fields',
+                formEmailError: 'Please enter a valid email',
+                footerText: '&copy; 2026 Ahmed Abdellah. All rights reserved.',
+                gmail: 'Gmail',
+                telegram: 'Telegram'
+            },
+            fr: {
+                greeting: 'Bonjour, je suis',
+                heroSubtitle: 'Ingénieur logiciel & Développeur web & Designer',
+                heroDescription: "J'aide les entreprises à améliorer leurs opérations, à maîtriser les coûts et à améliorer la qualité de l'expérience client.",
+                navBrand: 'Ahmed Abdellah',
+                name: 'Ahmed Abdellah',
+                contactMe: 'Contactez-moi',
+                learnMore: 'En savoir plus',
+                home: 'Accueil',
+                about: 'À propos',
+                experience: 'Expérience',
+                skills: 'Compétences',
+                projects: 'Projets',
+                services: 'Services',
+                contact: 'Contact',
+                aboutMe: 'À propos de moi',
+                experienceTitle: 'Expérience',
+                skillsTitle: 'Compétences',
+                projectsTitle: 'Projets / Réalisations',
+                servicesTitle: 'Services',
+                contactTitle: 'Contactez-moi',
+                aboutCard1: 'À propos de moi',
+                aboutCard2: 'Début de carrière',
+                aboutCard3: 'Développement professionnel',
+                aboutCard4: 'Expérience actuelle',
+                aboutSummary: "Aujourd'hui, je propose des solutions logicielles intégrées qui combinent haute performance, design attrayant et expérience utilisateur exceptionnelle.",
+                exp1Title: 'Développeur Full-Stack',
+                exp1Desc: "Développement d'applications web complètes avec React, Node.js et MongoDB",
+                exp2Title: 'Développeur Frontend',
+                exp2Desc: "Conception et développement d'interfaces utilisateur interactives et réactives",
+                exp3Title: 'Designer UI/UX',
+                exp3Desc: "Conception d'expériences utilisateur attrayantes et faciles à utiliser avec un accent sur la performance",
+                exp4Title: 'Développeur Backend',
+                exp4Desc: "Construction d'API robustes et de bases de données optimisées pour les performances",
+                skill1: 'Développement Frontend',
+                skill2: 'Développement Backend',
+                skill3: 'Design UI/UX',
+                skill4: 'Design Responsive',
+                skill5: 'Gestion de bases de données',
+                skill6: 'Optimisation des performances',
+                skill7: 'JavaScript/TypeScript',
+                skill8: 'React.js',
+                skill9: 'Node.js',
+                skill10: 'Git/GitHub',
+                skill11: 'APIs',
+                skill12: 'CSS/SASS',
+                project1Title: 'Application Web E-commerce',
+                project1Desc: "Développement d'une boutique e-commerce complète avec interface utilisateur moderne et gestion de panier",
+                project2Title: 'Application Mobile E-learning',
+                project2Desc: "Conception et développement d'une application mobile interactive pour les leçons et les tests",
+                project3Title: 'Plateforme de Design UI',
+                project3Desc: "Construction d'un outil en ligne pour les designers UI avec une bibliothèque de composants prêts à l'emploi",
+                project4Title: 'Système de Gestion de Projet',
+                project4Desc: "Développement d'un système intégré de gestion de projet, de tâches et de rapports",
+                project5Title: 'Tableau de Bord API',
+                project5Desc: "Construction d'un tableau de bord interactif pour gérer et surveiller les API d'applications",
+                project6Title: 'Jeu Web Interactif',
+                project6Desc: "Développement d'un jeu multijoueur utilisant WebSocket et Canvas",
+                service1Title: "Développement d'applications Web",
+                service1Desc: "Construction d'applications web modernes et réactives utilisant les dernières technologies",
+                service2Title: 'Design UI/UX',
+                service2Desc: "Conception d'expériences utilisateur attrayantes et faciles à utiliser avec un accent sur la performance",
+                service3Title: "Développement d'applications mobiles",
+                service3Desc: "Développement d'applications mobiles natives pour iOS et Android",
+                service4Title: 'Optimisation des performances et SEO',
+                service4Desc: "Optimisation de la vitesse du site web et conception pour les moteurs de recherche",
+                service5Title: 'Développement de bases de données et d\'API',
+                service5Desc: "Conception de bases de données robustes et d'interfaces de programmation sécurisées",
+                service6Title: 'Maintenance et support technique',
+                service6Desc: "Fourniture de support technique continu et de maintenance des systèmes",
+                service7Title: 'Consultation logicielle',
+                service7Desc: "Fourniture de conseils spécialisés dans le choix des technologies et la conception de systèmes",
+                service8Title: 'Développement React.js',
+                service8Desc: "Construction d'applications React modernes avec Hooks et Context API",
+                service9Title: 'Développement Full-Stack',
+                service9Desc: "Développement d'applications complètes du frontend au backend et à la base de données",
+                formName: 'Nom',
+                formEmail: 'Email',
+                formSubject: 'Sujet',
+                formMessage: 'Message',
+                formSubmit: 'Envoyer le message',
+                formSending: 'Envoi en cours...',
+                formSuccess: 'Merci! Votre message a été envoyé avec succès',
+                formError: 'Une erreur s\'est produite lors de l\'envoi. Veuillez réessayer',
+                formValidationError: 'Veuillez remplir tous les champs',
+                formEmailError: 'Veuillez entrer un email valide',
+                footerText: '&copy; 2026 Ahmed Abdellah. Tous droits réservés.',
+                gmail: 'Gmail',
+                telegram: 'Telegram'
+            },
+            de: {
+                greeting: 'Hallo, ich bin',
+                heroSubtitle: 'Softwareentwickler & Webentwickler & Designer',
+                heroDescription: 'Ich helfe Unternehmen, Abläufe zu verbessern, Kosten zu kontrollieren und die Qualität des Kundenerlebnisses zu steigern.',
+                navBrand: 'Ahmed Abdellah',
+                name: 'Ahmed Abdellah',
+                contactMe: 'Kontaktieren Sie mich',
+                learnMore: 'Erfahren Sie mehr',
+                home: 'Startseite',
+                about: 'Über mich',
+                experience: 'Erfahrung',
+                skills: 'Fähigkeiten',
+                projects: 'Projekte',
+                services: 'Dienstleistungen',
+                contact: 'Kontakt',
+                aboutMe: 'Über mich',
+                experienceTitle: 'Erfahrung',
+                skillsTitle: 'Fähigkeiten',
+                projectsTitle: 'Projekte / Erfolge',
+                servicesTitle: 'Dienstleistungen',
+                contactTitle: 'Kontaktieren Sie mich',
+                aboutCard1: 'Über mich',
+                aboutCard2: 'Karrierestart',
+                aboutCard3: 'Berufliche Entwicklung',
+                aboutCard4: 'Aktuelle Erfahrung',
+                aboutSummary: 'Heute biete ich integrierte Softwarelösungen an, die hohe Leistung, attraktives Design und außergewöhnliche Benutzererfahrung kombinieren.',
+                exp1Title: 'Full-Stack-Entwickler',
+                exp1Desc: 'Entwicklung vollständiger Webanwendungen mit React, Node.js und MongoDB',
+                exp2Title: 'Frontend-Entwickler',
+                exp2Desc: 'Design und Entwicklung interaktiver und responsiver Benutzeroberflächen',
+                exp3Title: 'UI/UX-Designer',
+                exp3Desc: 'Gestaltung attraktiver und benutzerfreundlicher Benutzererlebnisse mit Fokus auf Leistung',
+                exp4Title: 'Backend-Entwickler',
+                exp4Desc: 'Aufbau robuster APIs und leistungsoptimierter Datenbanken',
+                skill1: 'Frontend-Entwicklung',
+                skill2: 'Backend-Entwicklung',
+                skill3: 'UI/UX-Design',
+                skill4: 'Responsive Design',
+                skill5: 'Datenbankverwaltung',
+                skill6: 'Leistungsoptimierung',
+                skill7: 'JavaScript/TypeScript',
+                skill8: 'React.js',
+                skill9: 'Node.js',
+                skill10: 'Git/GitHub',
+                skill11: 'APIs',
+                skill12: 'CSS/SASS',
+                project1Title: 'E-Commerce-Webanwendung',
+                project1Desc: 'Entwicklung eines vollständigen E-Commerce-Shops mit moderner Benutzeroberfläche und Warenkorbverwaltung',
+                project2Title: 'Mobile E-Learning-App',
+                project2Desc: 'Design und Entwicklung einer interaktiven mobilen App für Lektionen und Tests',
+                project3Title: 'UI-Design-Plattform',
+                project3Desc: 'Aufbau eines Online-Tools für UI-Designer mit vorgefertigter Komponentenbibliothek',
+                project4Title: 'Projektmanagementsystem',
+                project4Desc: 'Entwicklung eines integrierten Systems für Projekt-, Aufgaben- und Berichtsmanagement',
+                project5Title: 'API-Dashboard',
+                project5Desc: 'Aufbau eines interaktiven Kontroll-Dashboards zur Verwaltung und Überwachung von Anwendungs-APIs',
+                project6Title: 'Interaktives Webspiel',
+                project6Desc: 'Entwicklung eines Mehrspieler-Spiels mit WebSocket und Canvas',
+                service1Title: 'Webanwendungsentwicklung',
+                service1Desc: 'Aufbau moderner und responsiver Webanwendungen mit den neuesten Technologien',
+                service2Title: 'UI/UX-Design',
+                service2Desc: 'Gestaltung attraktiver und benutzerfreundlicher Benutzererlebnisse mit Fokus auf Leistung',
+                service3Title: 'Mobile App-Entwicklung',
+                service3Desc: 'Entwicklung nativer mobiler Anwendungen für iOS und Android',
+                service4Title: 'Leistungsoptimierung & SEO',
+                service4Desc: 'Optimierung der Website-Geschwindigkeit und Design für Suchmaschinen',
+                service5Title: 'Datenbank- und API-Entwicklung',
+                service5Desc: 'Design robuster Datenbanken und sicherer Programmierschnittstellen',
+                service6Title: 'Wartung und technischer Support',
+                service6Desc: 'Bereitstellung von fortlaufendem technischem Support und Systemwartung',
+                service7Title: 'Softwareberatung',
+                service7Desc: 'Bereitstellung spezialisierter Beratung bei der Technologieauswahl und Systemdesign',
+                service8Title: 'React.js-Entwicklung',
+                service8Desc: 'Aufbau moderner React-Anwendungen mit Hooks und Context API',
+                service9Title: 'Full-Stack-Entwicklung',
+                service9Desc: 'Entwicklung kompletter Anwendungen vom Frontend bis zum Backend und zur Datenbank',
+                formName: 'Name',
+                formEmail: 'E-Mail',
+                formSubject: 'Betreff',
+                formMessage: 'Nachricht',
+                formSubmit: 'Nachricht senden',
+                formSending: 'Wird gesendet...',
+                formSuccess: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet',
+                formError: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut',
+                formValidationError: 'Bitte füllen Sie alle Felder aus',
+                formEmailError: 'Bitte geben Sie eine gültige E-Mail ein',
+                footerText: '&copy; 2026 Ahmed Abdellah. Alle Rechte vorbehalten.',
+                gmail: 'Gmail',
+                telegram: 'Telegram'
+            },
+            es: {
+                greeting: 'Hola, soy',
+                heroSubtitle: 'Ingeniero de software & Desarrollador web & Diseñador',
+                heroDescription: 'Ayudo a las empresas a mejorar las operaciones, controlar costos y mejorar la calidad de la experiencia del cliente.',
+                navBrand: 'Ahmed Abdellah',
+                name: 'Ahmed Abdellah',
+                contactMe: 'Contáctame',
+                learnMore: 'Aprende más',
+                home: 'Inicio',
+                about: 'Acerca de',
+                experience: 'Experiencia',
+                skills: 'Habilidades',
+                projects: 'Proyectos',
+                services: 'Servicios',
+                contact: 'Contacto',
+                aboutMe: 'Acerca de mí',
+                experienceTitle: 'Experiencia',
+                skillsTitle: 'Habilidades',
+                projectsTitle: 'Proyectos / Logros',
+                servicesTitle: 'Servicios',
+                contactTitle: 'Contáctame',
+                aboutCard1: 'Acerca de mí',
+                aboutCard2: 'Inicio de carrera',
+                aboutCard3: 'Desarrollo profesional',
+                aboutCard4: 'Experiencia actual',
+                aboutSummary: 'Hoy ofrezco soluciones de software integradas que combinan alto rendimiento, diseño atractivo y experiencia de usuario excepcional.',
+                exp1Title: 'Desarrollador Full-Stack',
+                exp1Desc: 'Desarrollo de aplicaciones web completas con React, Node.js y MongoDB',
+                exp2Title: 'Desarrollador Frontend',
+                exp2Desc: 'Diseño y desarrollo de interfaces de usuario interactivas y receptivas',
+                exp3Title: 'Diseñador UI/UX',
+                exp3Desc: 'Diseño de experiencias de usuario atractivas y fáciles de usar con enfoque en el rendimiento',
+                exp4Title: 'Desarrollador Backend',
+                exp4Desc: 'Construcción de API robustas y bases de datos optimizadas para el rendimiento',
+                skill1: 'Desarrollo Frontend',
+                skill2: 'Desarrollo Backend',
+                skill3: 'Diseño UI/UX',
+                skill4: 'Diseño Responsive',
+                skill5: 'Gestión de bases de datos',
+                skill6: 'Optimización de rendimiento',
+                skill7: 'JavaScript/TypeScript',
+                skill8: 'React.js',
+                skill9: 'Node.js',
+                skill10: 'Git/GitHub',
+                skill11: 'APIs',
+                skill12: 'CSS/SASS',
+                project1Title: 'Aplicación Web de Comercio Electrónico',
+                project1Desc: 'Desarrollo de una tienda de comercio electrónico completa con interfaz de usuario moderna y gestión de carrito de compras',
+                project2Title: 'Aplicación Móvil de E-learning',
+                project2Desc: 'Diseño y desarrollo de una aplicación móvil interactiva para lecciones y pruebas',
+                project3Title: 'Plataforma de Diseño UI',
+                project3Desc: 'Construcción de una herramienta en línea para diseñadores de UI con biblioteca de componentes listos',
+                project4Title: 'Sistema de Gestión de Proyectos',
+                project4Desc: 'Desarrollo de un sistema integrado para gestión de proyectos, tareas e informes',
+                project5Title: 'Panel de Control de API',
+                project5Desc: 'Construcción de un panel de control interactivo para gestionar y monitorear APIs de aplicaciones',
+                project6Title: 'Juego Web Interactivo',
+                project6Desc: 'Desarrollo de un juego multijugador usando WebSocket y Canvas',
+                service1Title: 'Desarrollo de aplicaciones web',
+                service1Desc: 'Construcción de aplicaciones web modernas y receptivas utilizando las últimas tecnologías',
+                service2Title: 'Diseño UI/UX',
+                service2Desc: 'Diseño de experiencias de usuario atractivas y fáciles de usar con enfoque en el rendimiento',
+                service3Title: 'Desarrollo de aplicaciones móviles',
+                service3Desc: 'Desarrollo de aplicaciones móviles nativas para iOS y Android',
+                service4Title: 'Optimización de rendimiento y SEO',
+                service4Desc: 'Optimización de la velocidad del sitio web y diseño para motores de búsqueda',
+                service5Title: 'Desarrollo de bases de datos y API',
+                service5Desc: 'Diseño de bases de datos robustas e interfaces de programación seguras',
+                service6Title: 'Mantenimiento y soporte técnico',
+                service6Desc: 'Proporcionar soporte técnico continuo y mantenimiento de sistemas',
+                service7Title: 'Consultoría de software',
+                service7Desc: 'Proporcionar consultoría especializada en selección de tecnologías y diseño de sistemas',
+                service8Title: 'Desarrollo React.js',
+                service8Desc: 'Construcción de aplicaciones React modernas con Hooks y Context API',
+                service9Title: 'Desarrollo Full-Stack',
+                service9Desc: 'Desarrollo de aplicaciones completas desde el frontend hasta el backend y la base de datos',
+                formName: 'Nombre',
+                formEmail: 'Correo electrónico',
+                formSubject: 'Asunto',
+                formMessage: 'Mensaje',
+                formSubmit: 'Enviar mensaje',
+                formSending: 'Enviando...',
+                formSuccess: '¡Gracias! Tu mensaje ha sido enviado exitosamente',
+                formError: 'Ocurrió un error al enviar. Por favor intenta de nuevo',
+                formValidationError: 'Por favor completa todos los campos',
+                formEmailError: 'Por favor ingresa un correo electrónico válido',
+                footerText: '&copy; 2026 Ahmed Abdellah. Todos los derechos reservados.',
+                gmail: 'Gmail',
+                telegram: 'Telegram'
+            },
+            zh: {
+                greeting: '你好，我是',
+                heroSubtitle: '软件工程师 & 网络开发者 & 设计师',
+                heroDescription: '我帮助公司改善运营、控制成本并提升客户体验质量。',
+                navBrand: '艾哈迈德·阿卜杜拉',
+                name: '艾哈迈德·阿卜杜拉',
+                contactMe: '联系我',
+                learnMore: '了解更多',
+                home: '首页',
+                about: '关于',
+                experience: '经验',
+                skills: '技能',
+                projects: '项目',
+                services: '服务',
+                contact: '联系',
+                aboutMe: '关于我',
+                experienceTitle: '经验',
+                skillsTitle: '技能',
+                projectsTitle: '项目 / 成就',
+                servicesTitle: '服务',
+                contactTitle: '联系我',
+                aboutCard1: '关于我',
+                aboutCard2: '职业开始',
+                aboutCard3: '职业发展',
+                aboutCard4: '当前经验',
+                aboutSummary: '今天我提供集成的软件解决方案，结合了高性能、吸引人的设计和卓越的用户体验。',
+                exp1Title: '全栈开发者',
+                exp1Desc: '使用 React、Node.js 和 MongoDB 开发完整的网络应用',
+                exp2Title: '前端开发者',
+                exp2Desc: '设计和开发交互式和响应式用户界面',
+                exp3Title: 'UI/UX设计师',
+                exp3Desc: '设计有吸引力且易于使用的用户体验，注重性能',
+                exp4Title: '后端开发者',
+                exp4Desc: '构建强大的 API 和性能优化的数据库',
+                skill1: '前端开发',
+                skill2: '后端开发',
+                skill3: 'UI/UX设计',
+                skill4: '响应式设计',
+                skill5: '数据库管理',
+                skill6: '性能优化',
+                skill7: 'JavaScript/TypeScript',
+                skill8: 'React.js',
+                skill9: 'Node.js',
+                skill10: 'Git/GitHub',
+                skill11: 'APIs',
+                skill12: 'CSS/SASS',
+                project1Title: '电子商务网络应用',
+                project1Desc: '开发了一个完整的电子商务商店，具有现代用户界面和购物车管理',
+                project2Title: '移动电子学习应用',
+                project2Desc: '设计和开发了一个用于课程和测试的交互式移动应用',
+                project3Title: 'UI设计平台',
+                project3Desc: '为UI设计师构建了一个在线工具，带有现成的组件库',
+                project4Title: '项目管理系统',
+                project4Desc: '开发了一个集成的项目、任务和报告管理系统',
+                project5Title: 'API仪表板',
+                project5Desc: '构建了一个用于管理和监控应用程序API的交互式控制仪表板',
+                project6Title: '互动网络游戏',
+                project6Desc: '使用 WebSocket 和 Canvas 开发了一个多人游戏',
+                service1Title: '网络应用开发',
+                service1Desc: '使用最新技术构建现代和响应式网络应用',
+                service2Title: 'UI/UX设计',
+                service2Desc: '设计有吸引力且易于使用的用户体验，注重性能',
+                service3Title: '移动应用开发',
+                service3Desc: '为 iOS 和 Android 开发原生移动应用',
+                service4Title: '性能优化和搜索引擎优化',
+                service4Desc: '优化网站速度并为搜索引擎设计',
+                service5Title: '数据库和API开发',
+                service5Desc: '设计强大的数据库和安全的编程接口',
+                service6Title: '维护和技术支持',
+                service6Desc: '提供持续的技术支持和系统维护',
+                service7Title: '软件咨询',
+                service7Desc: '提供技术选择和系统设计方面的专业咨询',
+                service8Title: 'React.js开发',
+                service8Desc: '使用 Hooks 和 Context API 构建现代 React 应用',
+                service9Title: '全栈开发',
+                service9Desc: '开发从前端到后端和数据库的完整应用',
+                formName: '姓名',
+                formEmail: '电子邮件',
+                formSubject: '主题',
+                formMessage: '消息',
+                formSubmit: '发送消息',
+                formSending: '发送中...',
+                formSuccess: '谢谢！您的消息已成功发送',
+                formError: '发送时发生错误。请重试',
+                formValidationError: '请填写所有字段',
+                formEmailError: '请输入有效的电子邮件',
+                footerText: '&copy; 2026 艾哈迈德·阿卜杜拉。版权所有。',
+                gmail: 'Gmail',
+                telegram: 'Telegram'
+            }
+        };
+
+        const updateLanguage = (lang) => {
+            const html = document.documentElement;
+            currentLang = lang;
+
+            // Update HTML attributes
+            if (lang === 'ar') {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+            } else {
+                html.setAttribute('lang', lang);
+                html.setAttribute('dir', 'ltr');
+            }
+
+            // Get translations for the selected language
+            const trans = translations[lang] || translations.en;
+
+            // Update navigation
+            document.getElementById('nav-home').textContent = trans.home;
+            document.getElementById('nav-about').textContent = trans.about;
+            document.getElementById('nav-experience').textContent = trans.experience;
+            document.getElementById('nav-skills').textContent = trans.skills;
+            document.getElementById('nav-projects').textContent = trans.projects;
+            document.getElementById('nav-services').textContent = trans.services;
+            document.getElementById('nav-contact').textContent = trans.contact;
+            document.querySelector('.nav-brand').textContent = trans.navBrand;
+
+            // Update hero section
+            document.getElementById('greeting').textContent = trans.greeting;
+            document.getElementById('name').textContent = trans.name;
+            document.getElementById('hero-subtitle').textContent = trans.heroSubtitle;
+            document.getElementById('hero-description').textContent = trans.heroDescription;
+            document.getElementById('contact-btn').textContent = trans.contactMe;
+            document.getElementById('learn-btn').textContent = trans.learnMore;
+            document.getElementById('profile-img').alt = trans.name;
+
+            // Update section titles
+            document.getElementById('about-title').textContent = trans.aboutMe;
+            document.getElementById('experience-title').textContent = trans.experienceTitle;
+            document.getElementById('skills-title').textContent = trans.skillsTitle;
+            document.getElementById('projects-title').textContent = trans.projectsTitle;
+            document.getElementById('services-title').textContent = trans.servicesTitle;
+            document.getElementById('contact-title').textContent = trans.contactTitle;
+
+            // Update about section
+            document.getElementById('about-card1-title').textContent = trans.aboutCard1;
+            document.getElementById('about-card1-desc').textContent = trans.aboutCard1;
+            document.getElementById('about-card2-title').textContent = trans.aboutCard2;
+            document.getElementById('about-card2-desc').textContent = trans.aboutCard2;
+            document.getElementById('about-card3-title').textContent = trans.aboutCard3;
+            document.getElementById('about-card3-desc').textContent = trans.aboutCard3;
+            document.getElementById('about-card4-title').textContent = trans.aboutCard4;
+            document.getElementById('about-card4-desc').textContent = trans.aboutCard4;
+            document.getElementById('about-summary').textContent = trans.aboutSummary;
+
+            // Update experience section
+            document.getElementById('exp1-title').textContent = trans.exp1Title;
+            document.getElementById('exp1-desc').textContent = trans.exp1Desc;
+            document.getElementById('exp2-title').textContent = trans.exp2Title;
+            document.getElementById('exp2-desc').textContent = trans.exp2Desc;
+            document.getElementById('exp3-title').textContent = trans.exp3Title;
+            document.getElementById('exp3-desc').textContent = trans.exp3Desc;
+            document.getElementById('exp4-title').textContent = trans.exp4Title;
+            document.getElementById('exp4-desc').textContent = trans.exp4Desc;
+
+            // Update skills section
+            document.getElementById('skill1').textContent = trans.skill1;
+            document.getElementById('skill2').textContent = trans.skill2;
+            document.getElementById('skill3').textContent = trans.skill3;
+            document.getElementById('skill4').textContent = trans.skill4;
+            document.getElementById('skill5').textContent = trans.skill5;
+            document.getElementById('skill6').textContent = trans.skill6;
+            document.getElementById('skill7').textContent = trans.skill7;
+            document.getElementById('skill8').textContent = trans.skill8;
+            document.getElementById('skill9').textContent = trans.skill9;
+            document.getElementById('skill10').textContent = trans.skill10;
+            document.getElementById('skill11').textContent = trans.skill11;
+            document.getElementById('skill12').textContent = trans.skill12;
+
+            // Update projects section
+            document.getElementById('project1-title').textContent = trans.project1Title;
+            document.getElementById('project1-desc').textContent = trans.project1Desc;
+            document.getElementById('project2-title').textContent = trans.project2Title;
+            document.getElementById('project2-desc').textContent = trans.project2Desc;
+            document.getElementById('project3-title').textContent = trans.project3Title;
+            document.getElementById('project3-desc').textContent = trans.project3Desc;
+            document.getElementById('project4-title').textContent = trans.project4Title;
+            document.getElementById('project4-desc').textContent = trans.project4Desc;
+            document.getElementById('project5-title').textContent = trans.project5Title;
+            document.getElementById('project5-desc').textContent = trans.project5Desc;
+            document.getElementById('project6-title').textContent = trans.project6Title;
+            document.getElementById('project6-desc').textContent = trans.project6Desc;
+
+            // Update services section
+            document.getElementById('service1-title').textContent = trans.service1Title;
+            document.getElementById('service1-desc').textContent = trans.service1Desc;
+            document.getElementById('service2-title').textContent = trans.service2Title;
+            document.getElementById('service2-desc').textContent = trans.service2Desc;
+            document.getElementById('service3-title').textContent = trans.service3Title;
+            document.getElementById('service3-desc').textContent = trans.service3Desc;
+            document.getElementById('service4-title').textContent = trans.service4Title;
+            document.getElementById('service4-desc').textContent = trans.service4Desc;
+            document.getElementById('service5-title').textContent = trans.service5Title;
+            document.getElementById('service5-desc').textContent = trans.service5Desc;
+            document.getElementById('service6-title').textContent = trans.service6Title;
+            document.getElementById('service6-desc').textContent = trans.service6Desc;
+            document.getElementById('service7-title').textContent = trans.service7Title;
+            document.getElementById('service7-desc').textContent = trans.service7Desc;
+            document.getElementById('service8-title').textContent = trans.service8Title;
+            document.getElementById('service8-desc').textContent = trans.service8Desc;
+            document.getElementById('service9-title').textContent = trans.service9Title;
+            document.getElementById('service9-desc').textContent = trans.service9Desc;
+
+            // Update contact section - form labels and placeholders
+            const formLabels = document.querySelectorAll('.form-group label');
+            const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+            
+            // Map of form elements to their translation keys
+            const formLabelKeys = [
+                trans.formName,
+                trans.formEmail,
+                trans.formSubject,
+                trans.formMessage
+            ];
+            
+            formLabels.forEach((label, index) => {
+                if (index < formLabelKeys.length) {
+                    label.textContent = formLabelKeys[index];
+                }
+            });
+
+            // Update placeholders
+            const placeholders = [
+                trans.formName === 'الاسم' ? 'أدخل اسمك' : 
+                    trans.formName === 'Name' ? 'Enter your name' :
+                    trans.formName === 'Nom' ? 'Entrez votre nom' :
+                    trans.formName === 'Name' ? 'Geben Sie Ihren Namen ein' :
+                    trans.formName === 'Nombre' ? 'Ingrese su nombre' : '输入您的姓名',
+                trans.formEmail === 'البريد الإلكتروني' ? 'أدخل بريدك الإلكتروني' :
+                    trans.formEmail === 'Email' ? 'Enter your email' :
+                    trans.formEmail === 'Email' ? 'Entrez votre email' :
+                    trans.formEmail === 'E-Mail' ? 'Geben Sie Ihre E-Mail ein' :
+                    trans.formEmail === 'Correo electrónico' ? 'Ingrese su correo electrónico' : '输入您的电子邮件',
+                trans.formSubject === 'الموضوع' ? 'أدخل موضوع الرسالة' :
+                    trans.formSubject === 'Subject' ? 'Enter subject' :
+                    trans.formSubject === 'Sujet' ? 'Entrez le sujet' :
+                    trans.formSubject === 'Betreff' ? 'Geben Sie den Betreff ein' :
+                    trans.formSubject === 'Asunto' ? 'Ingrese el asunto' : '输入主题',
+                trans.formMessage === 'الرسالة' ? 'أدخل رسالتك' :
+                    trans.formMessage === 'Message' ? 'Enter your message' :
+                    trans.formMessage === 'Message' ? 'Entrez votre message' :
+                    trans.formMessage === 'Nachricht' ? 'Geben Sie Ihre Nachricht ein' :
+                    trans.formMessage === 'Mensaje' ? 'Ingrese su mensaje' : '输入您的消息'
+            ];
+
+            formInputs.forEach((input, index) => {
+                if (index < placeholders.length) {
+                    input.placeholder = placeholders[index];
+                }
+            });
+
+            document.getElementById('submit-btn').textContent = trans.formSubmit;
+
+            // Update contact cards
+            const contactCards = document.querySelectorAll('.contact-card h3');
+            if (contactCards.length >= 2) {
+                contactCards[0].textContent = trans.gmail;
+                contactCards[1].textContent = trans.telegram;
+            }
+
+            // Update footer
+            document.getElementById('footer-text').innerHTML = trans.footerText;
+
+            // Save preference
+            localStorage.setItem('preferredLang', lang);
+        };
+
+        const languageDropdown = () => {
+            const dropdownBtn = document.getElementById('langDropdownBtn');
+            const dropdownMenu = document.getElementById('langDropdownMenu');
+            const currentLangFlag = document.getElementById('currentLangFlag');
+            const currentLangText = document.getElementById('currentLangText');
+            const langOptions = document.querySelectorAll('.lang-option');
+
+            // Language info with flags
+            const langInfo = {
+                ar: { flag: '🇸🇦', name: 'العربية' },
+                en: { flag: '🇬🇧', name: 'English' },
+                fr: { flag: '🇫🇷', name: 'Français' },
+                de: { flag: '🇩🇪', name: 'Deutsch' },
+                es: { flag: '🇪🇸', name: 'Español' },
+                zh: { flag: '🇨🇳', name: '中文' }
+            };
+
+            // Toggle dropdown
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Handle language selection
+            langOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const lang = option.getAttribute('data-lang');
+                    const info = langInfo[lang];
+
+                    // Update current language display
+                    currentLangFlag.textContent = info.flag;
+                    currentLangText.textContent = info.name;
+
+                    // Update language
+                    updateLanguage(lang);
+
+                    // Close dropdown
+                    dropdownMenu.classList.remove('show');
+                });
+            });
+
+            // Load saved language preference
+            const savedLang = localStorage.getItem('preferredLang') || 'ar';
+            const info = langInfo[savedLang];
+            currentLangFlag.textContent = info.flag;
+            currentLangText.textContent = info.name;
+
+            // Apply saved language if not Arabic
+            if (savedLang !== 'ar') {
+                updateLanguage(savedLang);
+            }
+        };
+
+        // Initialize language dropdown
+        document.addEventListener('DOMContentLoaded', () => {
+            languageDropdown();
+        });
+
+        // Progress Bar
+        const progressBar = document.getElementById('progressBar');
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Contact Form Handling with Forminit
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const FORM_ID = "eqntvk1suxn";
+
+        const normalizeEmail = (value) => {
+            if (!value) return '';
+            return String(value).trim().toLowerCase();
+        };
+
+        const fixCommonEmailTypos = (email) => {
+            const parts = email.split('@');
+            if (parts.length !== 2) return email;
+            const local = parts[0];
+            let domain = parts[1];
+
+            const domainFixes = {
+                'gmial.com': 'gmail.com',
+                'gamil.com': 'gmail.com',
+                'gmai.com': 'gmail.com',
+                'hotmial.com': 'hotmail.com',
+                'hotmai.com': 'hotmail.com',
+                'outlok.com': 'outlook.com',
+                'outllok.com': 'outlook.com',
+                'yaho.com': 'yahoo.com',
+                'yahho.com': 'yahoo.com'
+            };
+
+            if (domainFixes[domain]) {
+                domain = domainFixes[domain];
+            }
+
+            return `${local}@${domain}`;
+        };
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(contactForm);
+                const name = String(formData.get('fi-sender-firstName') || '').trim();
+                let email = normalizeEmail(formData.get('fi-sender-email'));
+                const subject = String(formData.get('fi-text-subject') || '').trim();
+                const message = String(formData.get('fi-text-message') || '').trim();
+
+                const trans = translations[currentLang] || translations.en;
+
+                // Simple validation
+                if (!name || !email || !subject || !message) {
+                    formMessage.textContent = trans.formValidationError;
+                    formMessage.className = 'form-message error';
+                    formMessage.style.display = 'block';
+                    return;
+                }
+
+                // Email validation
+                const emailInput = contactForm.querySelector('#email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+                const fixedEmail = fixCommonEmailTypos(email);
+
+                if (fixedEmail !== email) {
+                    email = fixedEmail;
+                    if (emailInput) {
+                        emailInput.value = email;
+                    }
+                }
+
+                const html5Valid = emailInput ? emailInput.checkValidity() : true;
+
+                if (!html5Valid || !emailRegex.test(email)) {
+                    if (emailInput) emailInput.reportValidity();
+                    formMessage.textContent = trans.formEmailError;
+                    formMessage.className = 'form-message error';
+                    formMessage.style.display = 'block';
+                    return;
+                }
+
+                formData.set('fi-sender-email', email);
+
+                // Show loading state
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = trans.formSending;
+                formMessage.style.display = 'none';
+
+                try {
+                    // Initialize Forminit
+                    const forminit = new Forminit();
+                    const { data, error } = await forminit.submit(FORM_ID, formData);
+
+                    if (error) {
+                        formMessage.textContent = trans.formError;
+                        formMessage.className = 'form-message error';
+                        formMessage.style.display = 'block';
+                    } else {
+                        formMessage.textContent = trans.formSuccess;
+                        formMessage.className = 'form-message success';
+                        formMessage.style.display = 'block';
+                        contactForm.reset();
+                    }
+                } catch (error) {
+                    formMessage.textContent = trans.formError;
+                    formMessage.className = 'form-message error';
+                    formMessage.style.display = 'block';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                }
+            });
+        }
+
+        // Console welcome message
+        console.log('%cمرحباً بك في موقع أحمد عبداللاه', 'color: #2c2c2c; font-size: 20px; font-weight: bold;');
+        console.log('%cتم التطوير بواسطة HTML, CSS, JavaScript', 'color: #6a6a6a; font-size: 14px;');
+    </script>
+</body>
+
+</html>
