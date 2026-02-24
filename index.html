@@ -1854,7 +1854,7 @@
         <div class="scroll-indicator"><span></span></div>
     </section>
 
-    <!-- About Me Section - Updated for Software Engineer, Web Developer, Graphic Designer -->
+    <!-- About Me Section -->
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title" id="about-title" data-ar="من أنا" data-en="About Me" data-fr="À propos de moi" data-de="Über mich" data-es="Acerca de mí" data-zh="关于我">من أنا</h2>
@@ -1905,7 +1905,7 @@
         </div>
     </section>
 
-    <!-- Experience Section - Updated -->
+    <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
             <h2 class="section-title" id="experience-title" data-ar="الخبرات العملية" data-en="Experience" data-fr="Expérience" data-de="Erfahrung" data-es="Experiencia" data-zh="经验">الخبرات العملية</h2>
@@ -1959,7 +1959,7 @@
         </div>
     </section>
 
-    <!-- Skills Section - Updated -->
+    <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title" id="skills-title" data-ar="المهارات" data-en="Skills" data-fr="Compétences" data-de="Fähigkeiten" data-es="Habilidades" data-zh="技能">المهارات</h2>
@@ -2061,7 +2061,7 @@
         </div>
     </section>
 
-    <!-- Services Section - Updated -->
+    <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title" id="services-title" data-ar="الخدمات" data-en="Services" data-fr="Services" data-de="Dienstleistungen" data-es="Servicios" data-zh="服务">الخدمات</h2>
@@ -2437,14 +2437,12 @@
             }
         };
 
-        // Initialize theme
+        // Initialize theme - ALWAYS START WITH DARK MODE
         const initializeTheme = () => {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
-                document.body.classList.add('light-theme');
-            }
+            // Remove any existing theme class
+            document.body.classList.remove('light-theme');
+            // Set to dark mode (default)
+            localStorage.setItem('theme', 'dark');
         };
 
         // Add event listener
@@ -3153,10 +3151,10 @@
             }
         };
 
-        // Initialize language dropdown
+        // Initialize language dropdown and theme
         document.addEventListener('DOMContentLoaded', () => {
             languageDropdown();
-            initializeTheme();
+            initializeTheme(); // Always start with dark mode
         });
 
         // Progress Bar
