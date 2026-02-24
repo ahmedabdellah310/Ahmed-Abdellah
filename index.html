@@ -406,6 +406,311 @@
             text-align: left;
         }
 
+        /* Professional Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: var(--bg-white);
+            backdrop-filter: blur(20px);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9999;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            background: var(--bg-light);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--bg-white);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-close:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .sidebar-profile {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .sidebar-profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .sidebar-profile-name {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-profile-title {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .sidebar-nav {
+            padding: 1.5rem 0;
+        }
+
+        .sidebar-nav-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-right: 3px solid transparent;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .sidebar-nav-item:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            border-right-color: var(--accent-color);
+            padding-right: 2rem;
+        }
+
+        .sidebar-nav-item.active {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            border-right-color: var(--primary-color);
+        }
+
+        .sidebar-social {
+            padding: 1.5rem;
+            border-top: 1px solid var(--bg-light);
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .sidebar-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 9998;
+            color: white;
+        }
+
+        .sidebar-toggle:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .sidebar-toggle.active {
+            right: 340px;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 9997;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* RTL Sidebar Support */
+        html[dir="rtl"] .sidebar {
+            right: -320px;
+            left: auto;
+        }
+
+        html[dir="rtl"] .sidebar.active {
+            right: 0;
+        }
+
+        html[dir="rtl"] .sidebar-toggle {
+            right: 20px;
+            left: auto;
+        }
+
+        html[dir="rtl"] .sidebar-toggle.active {
+            right: 340px;
+        }
+
+        html[dir="ltr"] .sidebar {
+            left: -320px;
+            right: auto;
+        }
+
+        html[dir="ltr"] .sidebar.active {
+            left: 0;
+        }
+
+        html[dir="ltr"] .sidebar-toggle {
+            left: 20px;
+            right: auto;
+        }
+
+        html[dir="ltr"] .sidebar-toggle.active {
+            left: 340px;
+        }
+
+        html[dir="ltr"] .sidebar-nav-item {
+            border-right: none;
+            border-left: 3px solid transparent;
+        }
+
+        html[dir="ltr"] .sidebar-nav-item:hover {
+            border-right-color: transparent;
+            border-left-color: #4a4a4a;
+            padding-left: 2rem;
+            padding-right: 1.5rem;
+        }
+
+        html[dir="ltr"] .sidebar-nav-item.active {
+            border-right-color: transparent;
+            border-left-color: #6a6a6a;
+        }
+
+        html[dir="ltr"] .sidebar-close {
+            right: 1.5rem;
+            left: auto;
+        }
+
+        /* Responsive Sidebar */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 280px;
+                right: -280px;
+            }
+
+            html[dir="ltr"] .sidebar {
+                left: -280px;
+            }
+
+            .sidebar-toggle {
+                width: 45px;
+                height: 45px;
+                right: 15px;
+            }
+
+            html[dir="ltr"] .sidebar-toggle {
+                left: 15px;
+            }
+
+            html[dir="rtl"] .sidebar-toggle.active {
+                right: 300px;
+            }
+
+            html[dir="ltr"] .sidebar-toggle.active {
+                left: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            html[dir="ltr"] .sidebar {
+                left: -100%;
+            }
+
+            .sidebar-toggle.active {
+                right: auto;
+            }
+
+            html[dir="ltr"] .sidebar-toggle.active {
+                left: auto;
+            }
+        }
+
+        /* Light theme sidebar */
+        body.light-theme .sidebar {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%);
+            box-shadow: -10px 0 40px rgba(14, 165, 233, 0.1);
+        }
+
+        body.light-theme .sidebar-toggle {
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            box-shadow: 0 5px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        body.light-theme .hamburger {
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            box-shadow: 0 5px 20px rgba(14, 165, 233, 0.3);
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -444,12 +749,26 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hamburger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-primary);
+            width: 20px;
+            height: 2px;
+            background: white;
             transition: all 0.3s ease;
         }
 
@@ -1441,13 +1760,13 @@
                 z-index: 100;
                 animation: bounce 2s infinite;
             }
-            
+
             .scroll-indicator span {
                 width: 26px;
                 height: 42px;
                 border-width: 2px;
             }
-            
+
             .scroll-indicator span::before {
                 content: '';
                 position: absolute;
@@ -1460,23 +1779,23 @@
                 border-radius: 2px;
                 animation: scrollMove 2s infinite;
             }
-            
+
             /* تحسين التباعد العام للهاتف */
             .hero {
                 padding-top: 60px;
                 min-height: 90vh;
                 padding-bottom: 40px;
             }
-            
+
             .hero-content {
                 gap: 2rem;
                 text-align: center;
             }
-            
+
             .hero-image {
                 margin: 0 auto;
             }
-            
+
             .hero-buttons {
                 justify-content: center;
             }
@@ -1487,12 +1806,12 @@
             .scroll-indicator {
                 bottom: 15px;
             }
-            
+
             .scroll-indicator span {
                 width: 24px;
                 height: 38px;
             }
-            
+
             .hero {
                 padding-bottom: 30px;
             }
@@ -1504,10 +1823,12 @@
                 opacity: 1;
                 transform: translateX(-50%) translateY(0);
             }
+
             75% {
                 opacity: 0;
                 transform: translateX(-50%) translateY(15px);
             }
+
             100% {
                 opacity: 0;
                 transform: translateX(-50%) translateY(0);
@@ -1535,13 +1856,20 @@
         <div class="container">
             <div class="nav-brand">أحمد عبداللاه</div>
             <ul class="nav-menu">
-                <li><a href="#home" id="nav-home" data-ar="الرئيسية" data-en="Home" data-fr="Accueil" data-de="Startseite" data-es="Inicio" data-zh="首页">الرئيسية</a></li>
-                <li><a href="#about" id="nav-about" data-ar="من أنا" data-en="About" data-fr="À propos" data-de="Über mich" data-es="Acerca de" data-zh="关于">من أنا</a></li>
-                <li><a href="#experience" id="nav-experience" data-ar="الخبرات" data-en="Experience" data-fr="Expérience" data-de="Erfahrung" data-es="Experiencia" data-zh="经验">الخبرات</a></li>
-                <li><a href="#skills" id="nav-skills" data-ar="المهارات" data-en="Skills" data-fr="Compétences" data-de="Fähigkeiten" data-es="Habilidades" data-zh="技能">المهارات</a></li>
-                <li><a href="#projects" id="nav-projects" data-ar="الإنجازات" data-en="Projects" data-fr="Projets" data-de="Projekte" data-es="Proyectos" data-zh="项目">الإنجازات</a></li>
-                <li><a href="#services" id="nav-services" data-ar="الخدمات" data-en="Services" data-fr="Services" data-de="Dienstleistungen" data-es="Servicios" data-zh="服务">الخدمات</a></li>
-                <li><a href="#contact" id="nav-contact" data-ar="التواصل" data-en="Contact" data-fr="Contact" data-de="Kontakt" data-es="Contacto" data-zh="联系">التواصل</a></li>
+                <li><a href="#home" id="nav-home" data-ar="الرئيسية" data-en="Home" data-fr="Accueil"
+                        data-de="Startseite" data-es="Inicio" data-zh="首页">الرئيسية</a></li>
+                <li><a href="#about" id="nav-about" data-ar="من أنا" data-en="About" data-fr="À propos"
+                        data-de="Über mich" data-es="Acerca de" data-zh="关于">من أنا</a></li>
+                <li><a href="#experience" id="nav-experience" data-ar="الخبرات" data-en="Experience"
+                        data-fr="Expérience" data-de="Erfahrung" data-es="Experiencia" data-zh="经验">الخبرات</a></li>
+                <li><a href="#skills" id="nav-skills" data-ar="المهارات" data-en="Skills" data-fr="Compétences"
+                        data-de="Fähigkeiten" data-es="Habilidades" data-zh="技能">المهارات</a></li>
+                <li><a href="#projects" id="nav-projects" data-ar="الإنجازات" data-en="Projects" data-fr="Projets"
+                        data-de="Projekte" data-es="Proyectos" data-zh="项目">الإنجازات</a></li>
+                <li><a href="#services" id="nav-services" data-ar="الخدمات" data-en="Services" data-fr="Services"
+                        data-de="Dienstleistungen" data-es="Servicios" data-zh="服务">الخدمات</a></li>
+                <li><a href="#contact" id="nav-contact" data-ar="التواصل" data-en="Contact" data-fr="Contact"
+                        data-de="Kontakt" data-es="Contacto" data-zh="联系">التواصل</a></li>
             </ul>
             <div class="nav-actions">
                 <div class="theme-toggle"><button class="theme-btn" id="themeToggle" aria-label="Toggle theme"><span
@@ -1582,33 +1910,75 @@
                             data-flag="🇨🇳"><span class="lang-flag">🇨🇳</span><span
                                 class="lang-name">中文</span></button></div>
                 </div>
-                <div class="hamburger"><span></span><span></span><span></span></div>
+                <div class="hamburger" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </nav>
+
+    <!-- Professional Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="sidebar-profile">
+                <img src="profile.jpg" alt="أحمد عبداللاه" class="sidebar-profile-img">
+                <h3 class="sidebar-profile-name">أحمد عبداللاه</h3>
+                <p class="sidebar-profile-title" id="sidebar-profile-title" data-ar="مهندس برمجيات ومطور ويب"
+                    data-en="Software Engineer & Web Developer" data-fr="Ingénieur logiciel & Développeur web"
+                    data-de="Softwareentwickler & Webentwickler" data-es="Ingeniero de software & Desarrollador web"
+                    data-zh="软件工程师和网络开发者">مهندس برمجيات ومطور ويب</p>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#home" class="sidebar-nav-item" id="sidebar-nav-home" data-ar="الرئيسية"
+                data-en="Home">الرئيسية</a>
+            <a href="#about" class="sidebar-nav-item" id="sidebar-nav-about" data-ar="من أنا" data-en="About">من أنا</a>
+            <a href="#experience" class="sidebar-nav-item" id="sidebar-nav-experience" data-ar="الخبرات"
+                data-en="Experience">الخبرات</a>
+            <a href="#skills" class="sidebar-nav-item" id="sidebar-nav-skills" data-ar="المهارات"
+                data-en="Skills">المهارات</a>
+            <a href="#projects" class="sidebar-nav-item" id="sidebar-nav-projects" data-ar="الإنجازات"
+                data-en="Projects">الإنجازات</a>
+            <a href="#services" class="sidebar-nav-item" id="sidebar-nav-services" data-ar="الخدمات"
+                data-en="Services">الخدمات</a>
+            <a href="#contact" class="sidebar-nav-item" id="sidebar-nav-contact" data-ar="التواصل"
+                data-en="Contact">التواصل</a>
+        </nav>
+    </aside>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-image"><img src="profile.jpg" alt="أحمد عبداللاه" class="profile-img" id="profile-img"></div>
+                <div class="hero-image"><img src="profile.jpg" alt="أحمد عبداللاه" class="profile-img" id="profile-img">
+                </div>
                 <div class="hero-text">
-                    <h1 class="hero-title"><span class="greeting" id="greeting" data-ar="مرحباً، أنا" data-en="Hi, I'm" data-fr="Bonjour, je suis" data-de="Hallo, ich bin" data-es="Hola, soy" data-zh="你好，我是">مرحباً،
+                    <h1 class="hero-title"><span class="greeting" id="greeting" data-ar="مرحباً، أنا" data-en="Hi, I'm"
+                            data-fr="Bonjour, je suis" data-de="Hallo, ich bin" data-es="Hola, soy"
+                            data-zh="你好，我是">مرحباً،
                             أنا</span><span class="name" id="name">أحمد عبداللاه</span></h1>
                     <h2 class="hero-subtitle" id="hero-subtitle" data-ar="مهندس برمجيات ومطور ويب ومصمم"
-                        data-en="Software Engineer & Web Developer & Designer" data-fr="Ingénieur logiciel & Développeur web & Designer" data-de="Softwareentwickler & Webentwickler & Designer" data-es="Ingeniero de software & Desarrollador web & Diseñador" data-zh="软件工程师 & 网络开发者 & 设计师">مهندس برمجيات ومطور ويب ومصمم
+                        data-en="Software Engineer & Web Developer & Designer"
+                        data-fr="Ingénieur logiciel & Développeur web & Designer"
+                        data-de="Softwareentwickler & Webentwickler & Designer"
+                        data-es="Ingeniero de software & Desarrollador web & Diseñador" data-zh="软件工程师 & 网络开发者 & 设计师">
+                        مهندس برمجيات ومطور ويب ومصمم
                     </h2>
-                    <p class="hero-description" id="hero-description"
-                        data-ar="أساعد الشركات على تحسين التشغيل، وضبط التكاليف، ورفع جودة تجربة العملاء."
-                        data-en="I help companies improve operations, control costs, and enhance customer experience quality."
-                        data-fr="J'aide les entreprises à améliorer leurs opérations, à maîtriser les coûts et à améliorer la qualité de l'expérience client."
-                        data-de="Ich helfe Unternehmen, Abläufe zu verbessern, Kosten zu kontrollieren und die Qualität des Kundenerlebnisses zu steigern."
-                        data-es="Ayudo a las empresas a mejorar las operaciones, controlar costos y mejorar la calidad de la experiencia del cliente."
-                        data-zh="我帮助公司改善运营、控制成本并提升客户体验质量。">
-                        أساعد الشركات على تحسين التشغيل، وضبط التكاليف، ورفع جودة تجربة العملاء. </p>
-                    <div class="hero-buttons"><a href="#contact" class="btn btn-primary" id="contact-btn" data-ar="تواصل معي"
-                            data-en="Contact Me" data-fr="Contactez-moi" data-de="Kontaktieren Sie mich" data-es="Contáctame" data-zh="联系我">تواصل معي</a><a href="#about" class="btn btn-secondary" id="learn-btn"
-                            data-ar="اعرف المزيد" data-en="Learn More" data-fr="En savoir plus" data-de="Erfahren Sie mehr" data-es="Aprende más" data-zh="了解更多">اعرف المزيد</a></div>
+                    <div class="hero-buttons"><a href="#contact" class="btn btn-primary" id="contact-btn"
+                            data-ar="تواصل معي" data-en="Contact Me" data-fr="Contactez-moi"
+                            data-de="Kontaktieren Sie mich" data-es="Contáctame" data-zh="联系我">تواصل معي</a><a
+                            href="#about" class="btn btn-secondary" id="learn-btn" data-ar="اعرف المزيد"
+                            data-en="Learn More" data-fr="En savoir plus" data-de="Erfahren Sie mehr"
+                            data-es="Aprende más" data-zh="了解更多">اعرف المزيد</a></div>
                 </div>
             </div>
         </div>
@@ -1617,7 +1987,8 @@
     <!-- About Me Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title" id="about-title" data-ar="من أنا" data-en="About Me" data-fr="À propos de moi" data-de="Über mich" data-es="Acerca de mí" data-zh="关于我">من أنا</h2>
+            <h2 class="section-title" id="about-title" data-ar="من أنا" data-en="About Me" data-fr="À propos de moi"
+                data-de="Über mich" data-es="Acerca de mí" data-zh="关于我">من أنا</h2>
             <div class="about-content">
                 <div class="about-card">
                     <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
@@ -1625,8 +1996,10 @@
                             <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg></div>
-                    <h3 id="about-card1-title" data-ar="نبذة عني" data-en="About Me" data-fr="À propos de moi" data-de="Über mich" data-es="Acerca de mí" data-zh="关于我">نبذة عني</h3>
-                    <p id="about-card1-desc" data-ar="أنا مهندس برمجيات ومطور ويب ومصمم، أمتلك خبرة واسعة في تطوير تطبيقات الويب الحديثة والتصاميم الإبداعية."
+                    <h3 id="about-card1-title" data-ar="نبذة عني" data-en="About Me" data-fr="À propos de moi"
+                        data-de="Über mich" data-es="Acerca de mí" data-zh="关于我">نبذة عني</h3>
+                    <p id="about-card1-desc"
+                        data-ar="أنا مهندس برمجيات ومطور ويب ومصمم، أمتلك خبرة واسعة في تطوير تطبيقات الويب الحديثة والتصاميم الإبداعية."
                         data-en="I am a software engineer and web developer & designer with extensive experience in building modern web applications and creative designs."
                         data-fr="Je suis ingénieur logiciel et développeur web & designer avec une vaste expérience dans la création d'applications web modernes et de designs créatifs."
                         data-de="Ich bin Softwareentwickler und Webentwickler & Designer mit umfangreicher Erfahrung in der Entwicklung moderner Webanwendungen und kreativer Designs."
@@ -1647,8 +2020,11 @@
                             <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
                             <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
                         </svg></div>
-                    <h3 id="about-card2-title" data-ar="بداية المسيرة" data-en="Career Start" data-fr="Début de carrière" data-de="Karrierestart" data-es="Inicio de carrera" data-zh="职业开始">بداية المسيرة</h3>
-                    <p id="about-card2-desc" data-ar="بدأت مسيرتي في عالم البرمجة بتعلم لغات الويب الأساسية، ثم تطورت إلى إطار العمل المتقدمة وأصبحت متخصصاً في تطوير تطبيقات Full-Stack."
+                    <h3 id="about-card2-title" data-ar="بداية المسيرة" data-en="Career Start"
+                        data-fr="Début de carrière" data-de="Karrierestart" data-es="Inicio de carrera" data-zh="职业开始">
+                        بداية المسيرة</h3>
+                    <p id="about-card2-desc"
+                        data-ar="بدأت مسيرتي في عالم البرمجة بتعلم لغات الويب الأساسية، ثم تطورت إلى إطار العمل المتقدمة وأصبحت متخصصاً في تطوير تطبيقات Full-Stack."
                         data-en="I started my programming journey by learning basic web languages, then evolved to advanced frameworks and became a Full-Stack application development specialist."
                         data-fr="J'ai commencé mon parcours de programmation en apprenant les langages web de base, puis j'ai évolué vers des frameworks avancés et je suis devenu spécialiste du développement d'applications Full-Stack."
                         data-de="Ich begann meine Programmierreise mit dem Erlernen grundlegender Websprachen, entwickelte mich dann zu fortgeschrittenen Frameworks weiter und wurde Spezialist für Full-Stack-Anwendungsentwicklung."
@@ -1664,8 +2040,11 @@
                             <line x1="18" y1="20" x2="18" y2="4"></line>
                             <line x1="6" y1="20" x2="6" y2="16"></line>
                         </svg></div>
-                    <h3 id="about-card3-title" data-ar="التطور المهني" data-en="Professional Growth" data-fr="Développement professionnel" data-de="Berufliche Entwicklung" data-es="Desarrollo profesional" data-zh="职业发展">التطور المهني</h3>
-                    <p id="about-card3-desc" data-ar="عملت على مشاريع متنوعة من مواقع الشركات الصغيرة إلى التطبيقات المعقدة، مما أكسبني خبرة عميقة في مختلف التقنيات والأدوات الحديثة."
+                    <h3 id="about-card3-title" data-ar="التطور المهني" data-en="Professional Growth"
+                        data-fr="Développement professionnel" data-de="Berufliche Entwicklung"
+                        data-es="Desarrollo profesional" data-zh="职业发展">التطور المهني</h3>
+                    <p id="about-card3-desc"
+                        data-ar="عملت على مشاريع متنوعة من مواقع الشركات الصغيرة إلى التطبيقات المعقدة، مما أكسبني خبرة عميقة في مختلف التقنيات والأدوات الحديثة."
                         data-en="I worked on diverse projects from small company websites to complex applications, which gave me deep experience in various modern technologies and tools."
                         data-fr="J'ai travaillé sur divers projets, des sites Web de petites entreprises aux applications complexes, ce qui m'a donné une expérience approfondie de diverses technologies et outils modernes."
                         data-de="Ich habe an verschiedenen Projekten gearbeitet, von kleinen Unternehmenswebsites bis hin zu komplexen Anwendungen, was mir tiefe Erfahrung mit verschiedenen modernen Technologien und Werkzeugen verschaffte."
@@ -1680,8 +2059,11 @@
                             <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                         </svg></div>
-                    <h3 id="about-card4-title" data-ar="الخبرة الحالية" data-en="Current Experience" data-fr="Expérience actuelle" data-de="Aktuelle Erfahrung" data-es="Experiencia actual" data-zh="当前经验">الخبرة الحالية</h3>
-                    <p id="about-card4-desc" data-ar="أمتلك خبرة متخصصة في تصميم واجهات المستخدم (UI/UX)، تطوير الواجهات الأمامية والخلفية، وإدارة قواعد البيانات والخوادم."
+                    <h3 id="about-card4-title" data-ar="الخبرة الحالية" data-en="Current Experience"
+                        data-fr="Expérience actuelle" data-de="Aktuelle Erfahrung" data-es="Experiencia actual"
+                        data-zh="当前经验">الخبرة الحالية</h3>
+                    <p id="about-card4-desc"
+                        data-ar="أمتلك خبرة متخصصة في تصميم واجهات المستخدم (UI/UX)، تطوير الواجهات الأمامية والخلفية، وإدارة قواعد البيانات والخوادم."
                         data-en="I have specialized expertise in user interface design (UI/UX), frontend and backend development, and database and server management."
                         data-fr="J'ai une expertise spécialisée dans la conception d'interfaces utilisateur (UI/UX), le développement frontend et backend, et la gestion de bases de données et de serveurs."
                         data-de="Ich verfüge über spezialisierte Expertise im User Interface Design (UI/UX), Frontend- und Backend-Entwicklung sowie Datenbank- und Servermanagement."
@@ -1692,7 +2074,8 @@
                 </div>
             </div>
             <div class="about-summary">
-                <p id="about-summary" data-ar="اليوم أقدم حلولاً برمجية متكاملة تجمع بين الأداء العالي، التصميم الجذاب، وتجربة مستخدم استثنائية."
+                <p id="about-summary"
+                    data-ar="اليوم أقدم حلولاً برمجية متكاملة تجمع بين الأداء العالي، التصميم الجذاب، وتجربة مستخدم استثنائية."
                     data-en="Today I offer integrated software solutions that combine high performance, attractive design, and exceptional user experience."
                     data-fr="Aujourd'hui, je propose des solutions logicielles intégrées qui combinent haute performance, design attrayant et expérience utilisateur exceptionnelle."
                     data-de="Heute biete ich integrierte Softwarelösungen an, die hohe Leistung, attraktives Design und außergewöhnliche Benutzererfahrung kombinieren."
@@ -1706,12 +2089,15 @@
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
-            <h2 class="section-title" id="experience-title" data-ar="الخبرات العملية" data-en="Experience" data-fr="Expérience" data-de="Erfahrung" data-es="Experiencia" data-zh="经验">الخبرات العملية
+            <h2 class="section-title" id="experience-title" data-ar="الخبرات العملية" data-en="Experience"
+                data-fr="Expérience" data-de="Erfahrung" data-es="Experiencia" data-zh="经验">الخبرات العملية
             </h2>
             <div class="experience-timeline">
                 <div class="experience-card">
                     <div class="card-header">
-                        <h3 id="exp1-title" data-ar="مطور Full-Stack" data-en="Full-Stack Developer" data-fr="Développeur Full-Stack" data-de="Full-Stack-Entwickler" data-es="Desarrollador Full-Stack" data-zh="全栈开发者">مطور Full-Stack
+                        <h3 id="exp1-title" data-ar="مطور Full-Stack" data-en="Full-Stack Developer"
+                            data-fr="Développeur Full-Stack" data-de="Full-Stack-Entwickler"
+                            data-es="Desarrollador Full-Stack" data-zh="全栈开发者">مطور Full-Stack
                         </h3>
                     </div>
                     <div class="card-body">
@@ -1726,7 +2112,9 @@
                 </div>
                 <div class="experience-card">
                     <div class="card-header">
-                        <h3 id="exp2-title" data-ar="مطور واجهات أمامية" data-en="Frontend Developer" data-fr="Développeur Frontend" data-de="Frontend-Entwickler" data-es="Desarrollador Frontend" data-zh="前端开发者">مطور واجهات
+                        <h3 id="exp2-title" data-ar="مطور واجهات أمامية" data-en="Frontend Developer"
+                            data-fr="Développeur Frontend" data-de="Frontend-Entwickler"
+                            data-es="Desarrollador Frontend" data-zh="前端开发者">مطور واجهات
                             أمامية</h3>
                     </div>
                     <div class="card-body">
@@ -1741,7 +2129,8 @@
                 </div>
                 <div class="experience-card">
                     <div class="card-header">
-                        <h3 id="exp3-title" data-ar="مصمم UI/UX" data-en="UI/UX Designer" data-fr="Designer UI/UX" data-de="UI/UX-Designer" data-es="Diseñador UI/UX" data-zh="UI/UX设计师">مصمم UI/UX</h3>
+                        <h3 id="exp3-title" data-ar="مصمم UI/UX" data-en="UI/UX Designer" data-fr="Designer UI/UX"
+                            data-de="UI/UX-Designer" data-es="Diseñador UI/UX" data-zh="UI/UX设计师">مصمم UI/UX</h3>
                     </div>
                     <div class="card-body">
                         <p id="exp3-desc" data-ar="تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء"
@@ -1755,7 +2144,9 @@
                 </div>
                 <div class="experience-card">
                     <div class="card-header">
-                        <h3 id="exp4-title" data-ar="مطور خلفية" data-en="Backend Developer" data-fr="Développeur Backend" data-de="Backend-Entwickler" data-es="Desarrollador Backend" data-zh="后端开发者">مطور خلفية</h3>
+                        <h3 id="exp4-title" data-ar="مطور خلفية" data-en="Backend Developer"
+                            data-fr="Développeur Backend" data-de="Backend-Entwickler" data-es="Desarrollador Backend"
+                            data-zh="后端开发者">مطور خلفية</h3>
                     </div>
                     <div class="card-body">
                         <p id="exp4-desc" data-ar="بناء واجهات API قوية وقواعد بيانات محسّنة للأداء"
@@ -1773,7 +2164,8 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title" id="skills-title" data-ar="المهارات" data-en="Skills" data-fr="Compétences" data-de="Fähigkeiten" data-es="Habilidades" data-zh="技能">المهارات</h2>
+            <h2 class="section-title" id="skills-title" data-ar="المهارات" data-en="Skills" data-fr="Compétences"
+                data-de="Fähigkeiten" data-es="Habilidades" data-zh="技能">المهارات</h2>
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
@@ -1782,7 +2174,9 @@
                             <line x1="8" y1="21" x2="16" y2="21"></line>
                             <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg></div>
-                    <h3 id="skill1" data-ar="تطوير Frontend" data-en="Frontend Development" data-fr="Développement Frontend" data-de="Frontend-Entwicklung" data-es="Desarrollo Frontend" data-zh="前端开发">تطوير Frontend
+                    <h3 id="skill1" data-ar="تطوير Frontend" data-en="Frontend Development"
+                        data-fr="Développement Frontend" data-de="Frontend-Entwicklung" data-es="Desarrollo Frontend"
+                        data-zh="前端开发">تطوير Frontend
                     </h3>
                 </div>
                 <div class="skill-card">
@@ -1795,14 +2189,17 @@
                             <path d="M5 10a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0v-6a3 3 0 0 0-3-3Z">
                             </path>
                         </svg></div>
-                    <h3 id="skill2" data-ar="تطوير Backend" data-en="Backend Development" data-fr="Développement Backend" data-de="Backend-Entwicklung" data-es="Desarrollo Backend" data-zh="后端开发">تطوير Backend</h3>
+                    <h3 id="skill2" data-ar="تطوير Backend" data-en="Backend Development"
+                        data-fr="Développement Backend" data-de="Backend-Entwicklung" data-es="Desarrollo Backend"
+                        data-zh="后端开发">تطوير Backend</h3>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                         </svg></div>
-                    <h3 id="skill3" data-ar="تصميم UI/UX" data-en="UI/UX Design" data-fr="Design UI/UX" data-de="UI/UX-Design" data-es="Diseño UI/UX" data-zh="UI/UX设计">تصميم UI/UX</h3>
+                    <h3 id="skill3" data-ar="تصميم UI/UX" data-en="UI/UX Design" data-fr="Design UI/UX"
+                        data-de="UI/UX-Design" data-es="Diseño UI/UX" data-zh="UI/UX设计">تصميم UI/UX</h3>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
@@ -1812,7 +2209,8 @@
                             <rect width="7" height="9" x="14" y="12" rx="1"></rect>
                             <rect width="7" height="5" x="3" y="16" rx="1"></rect>
                         </svg></div>
-                    <h3 id="skill4" data-ar="تطوير Responsive" data-en="Responsive Design" data-fr="Design Responsive" data-de="Responsive Design" data-es="Diseño Responsive" data-zh="响应式设计">تطوير Responsive
+                    <h3 id="skill4" data-ar="تطوير Responsive" data-en="Responsive Design" data-fr="Design Responsive"
+                        data-de="Responsive Design" data-es="Diseño Responsive" data-zh="响应式设计">تطوير Responsive
                     </h3>
                 </div>
                 <div class="skill-card">
@@ -1822,7 +2220,9 @@
                             <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                             <path d="M3 12A9 3 0 0 0 21 12"></path>
                         </svg></div>
-                    <h3 id="skill5" data-ar="قواعد البيانات" data-en="Database Management" data-fr="Gestion de bases de données" data-de="Datenbankverwaltung" data-es="Gestión de bases de datos" data-zh="数据库管理">قواعد البيانات
+                    <h3 id="skill5" data-ar="قواعد البيانات" data-en="Database Management"
+                        data-fr="Gestion de bases de données" data-de="Datenbankverwaltung"
+                        data-es="Gestión de bases de datos" data-zh="数据库管理">قواعد البيانات
                     </h3>
                 </div>
                 <div class="skill-card">
@@ -1830,7 +2230,9 @@
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                         </svg></div>
-                    <h3 id="skill6" data-ar="أداء وتحسين" data-en="Performance Optimization" data-fr="Optimisation des performances" data-de="Leistungsoptimierung" data-es="Optimización de rendimiento" data-zh="性能优化">أداء وتحسين
+                    <h3 id="skill6" data-ar="أداء وتحسين" data-en="Performance Optimization"
+                        data-fr="Optimisation des performances" data-de="Leistungsoptimierung"
+                        data-es="Optimización de rendimiento" data-zh="性能优化">أداء وتحسين
                     </h3>
                 </div>
                 <div class="skill-card">
@@ -1840,7 +2242,9 @@
                                 d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
                             </path>
                         </svg></div>
-                    <h3 id="skill7" data-ar="JavaScript/TypeScript" data-en="JavaScript/TypeScript" data-fr="JavaScript/TypeScript" data-de="JavaScript/TypeScript" data-es="JavaScript/TypeScript" data-zh="JavaScript/TypeScript">
+                    <h3 id="skill7" data-ar="JavaScript/TypeScript" data-en="JavaScript/TypeScript"
+                        data-fr="JavaScript/TypeScript" data-de="JavaScript/TypeScript" data-es="JavaScript/TypeScript"
+                        data-zh="JavaScript/TypeScript">
                         JavaScript/TypeScript</h3>
                 </div>
                 <div class="skill-card">
@@ -1858,14 +2262,16 @@
                             <path d="M4.93 19.07l2.83-2.83"></path>
                             <path d="M16.24 7.76l2.83-2.83"></path>
                         </svg></div>
-                    <h3 id="skill8" data-ar="React.js" data-en="React.js" data-fr="React.js" data-de="React.js" data-es="React.js" data-zh="React.js">React.js</h3>
+                    <h3 id="skill8" data-ar="React.js" data-en="React.js" data-fr="React.js" data-de="React.js"
+                        data-es="React.js" data-zh="React.js">React.js</h3>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                         </svg></div>
-                    <h3 id="skill9" data-ar="Node.js" data-en="Node.js" data-fr="Node.js" data-de="Node.js" data-es="Node.js" data-zh="Node.js">Node.js</h3>
+                    <h3 id="skill9" data-ar="Node.js" data-en="Node.js" data-fr="Node.js" data-de="Node.js"
+                        data-es="Node.js" data-zh="Node.js">Node.js</h3>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
@@ -1875,7 +2281,8 @@
                             </path>
                             <path d="M9 18c-4.51 2-5-2-7-2"></path>
                         </svg></div>
-                    <h3 id="skill10" data-ar="Git/GitHub" data-en="Git/GitHub" data-fr="Git/GitHub" data-de="Git/GitHub" data-es="Git/GitHub" data-zh="Git/GitHub">Git/GitHub</h3>
+                    <h3 id="skill10" data-ar="Git/GitHub" data-en="Git/GitHub" data-fr="Git/GitHub" data-de="Git/GitHub"
+                        data-es="Git/GitHub" data-zh="Git/GitHub">Git/GitHub</h3>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
@@ -1884,7 +2291,8 @@
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg></div>
-                    <h3 id="skill11" data-ar="APIs" data-en="API Development" data-fr="Développement d'API" data-de="API-Entwicklung" data-es="Desarrollo de API" data-zh="API开发">APIs</h3>
+                    <h3 id="skill11" data-ar="APIs" data-en="API Development" data-fr="Développement d'API"
+                        data-de="API-Entwicklung" data-es="Desarrollo de API" data-zh="API开发">APIs</h3>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><svg width="35" height="35" viewBox="0 0 24 24" fill="none"
@@ -1894,7 +2302,8 @@
                             <path d="M2 2l7.586 7.586"></path>
                             <circle cx="11" cy="11" r="2"></circle>
                         </svg></div>
-                    <h3 id="skill12" data-ar="CSS/SASS" data-en="CSS/SASS" data-fr="CSS/SASS" data-de="CSS/SASS" data-es="CSS/SASS" data-zh="CSS/SASS">CSS/SASS</h3>
+                    <h3 id="skill12" data-ar="CSS/SASS" data-en="CSS/SASS" data-fr="CSS/SASS" data-de="CSS/SASS"
+                        data-es="CSS/SASS" data-zh="CSS/SASS">CSS/SASS</h3>
                 </div>
             </div>
         </div>
@@ -1902,7 +2311,9 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title" id="projects-title" data-ar="الإنجازات" data-en="Projects / Achievements" data-fr="Projets / Réalisations" data-de="Projekte / Erfolge" data-es="Proyectos / Logros" data-zh="项目 / 成就">
+            <h2 class="section-title" id="projects-title" data-ar="الإنجازات" data-en="Projects / Achievements"
+                data-fr="Projets / Réalisations" data-de="Projekte / Erfolge" data-es="Proyectos / Logros"
+                data-zh="项目 / 成就">
                 الإنجازات</h2>
             <div class="projects-grid">
                 <div class="project-card">
@@ -1913,7 +2324,9 @@
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
                             </path>
                         </svg></div>
-                    <h3 id="project1-title" data-ar="تطبيق ويب للتجارة الإلكترونية" data-en="E-commerce Web Application" data-fr="Application Web E-commerce" data-de="E-Commerce-Webanwendung" data-es="Aplicación Web de Comercio Electrónico" data-zh="电子商务网络应用">
+                    <h3 id="project1-title" data-ar="تطبيق ويب للتجارة الإلكترونية" data-en="E-commerce Web Application"
+                        data-fr="Application Web E-commerce" data-de="E-Commerce-Webanwendung"
+                        data-es="Aplicación Web de Comercio Electrónico" data-zh="电子商务网络应用">
                         تطبيق ويب للتجارة الإلكترونية
                     </h3>
                     <p id="project1-desc" data-ar="تطوير متجر إلكتروني كامل بواجهة مستخدم حديثة وإدارة سلة التسوق"
@@ -1930,7 +2343,9 @@
                             <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
                             <path d="M12 18h.01"></path>
                         </svg></div>
-                    <h3 id="project2-title" data-ar="تطبيق موبايل للتعلم الإلكتروني" data-en="Mobile E-learning App" data-fr="Application Mobile E-learning" data-de="Mobile E-Learning-App" data-es="Aplicación Móvil de E-learning" data-zh="移动电子学习应用">
+                    <h3 id="project2-title" data-ar="تطبيق موبايل للتعلم الإلكتروني" data-en="Mobile E-learning App"
+                        data-fr="Application Mobile E-learning" data-de="Mobile E-Learning-App"
+                        data-es="Aplicación Móvil de E-learning" data-zh="移动电子学习应用">
                         تطبيق موبايل للتعلم الإلكتروني</h3>
                     <p id="project2-desc" data-ar="تصميم وتطوير تطبيق موبايل تفاعلي للدروس والاختبارات"
                         data-en="Designed and developed an interactive mobile app for lessons and tests"
@@ -1951,7 +2366,9 @@
                                 d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.01 17.461 2 12 2z">
                             </path>
                         </svg></div>
-                    <h3 id="project3-title" data-ar="منصة تصميم واجهات المستخدم" data-en="UI Design Platform" data-fr="Plateforme de Design UI" data-de="UI-Design-Plattform" data-es="Plataforma de Diseño UI" data-zh="UI设计平台">
+                    <h3 id="project3-title" data-ar="منصة تصميم واجهات المستخدم" data-en="UI Design Platform"
+                        data-fr="Plateforme de Design UI" data-de="UI-Design-Plattform"
+                        data-es="Plataforma de Diseño UI" data-zh="UI设计平台">
                         منصة تصميم واجهات المستخدم </h3>
                     <p id="project3-desc" data-ar="بناء أداة عبر الإنترنت لمصممي الواجهات مع مكتبة مكونات جاهزة"
                         data-en="Built an online tool for UI designers with ready-made component library"
@@ -1964,34 +2381,14 @@
                 <div class="project-card">
                     <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
-                            </path>
-                            <path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z">
-                            </path>
-                            <path d="M12 11h4"></path>
-                            <path d="M12 16h4"></path>
-                            <path d="M8 11h.01"></path>
-                            <path d="M8 16h.01"></path>
-                        </svg></div>
-                    <h3 id="project4-title" data-ar="نظام إدارة المشاريع" data-en="Project Management System" data-fr="Système de Gestion de Projet" data-de="Projektmanagementsystem" data-es="Sistema de Gestión de Proyectos" data-zh="项目管理系统">
-                        نظام إدارة المشاريع</h3>
-                    <p id="project4-desc" data-ar="تطوير نظام متكامل لإدارة المشاريع والمهام والتقارير"
-                        data-en="Developed an integrated system for project, task, and report management"
-                        data-fr="Développement d'un système intégré de gestion de projet, de tâches et de rapports"
-                        data-de="Entwicklung eines integrierten Systems für Projekt-, Aufgaben- und Berichtsmanagement"
-                        data-es="Desarrollo de un sistema integrado para gestión de proyectos, tareas e informes"
-                        data-zh="开发了一个集成的项目、任务和报告管理系统">
-                        تطوير نظام متكامل لإدارة المشاريع والمهام والتقارير</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12V7a2 2 0 0 0-2-2h-2l-2 2h-3l-2-2H5a2 2 0 0 0-2 2v5">
                             </path>
                             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7"></path>
                             <path d="M3 12h18"></path>
                         </svg></div>
-                    <h3 id="project5-title" data-ar="واجهة برمجة APIs" data-en="API Dashboard" data-fr="Tableau de Bord API" data-de="API-Dashboard" data-es="Panel de Control de API" data-zh="API仪表板">واجهة برمجة APIs
+                    <h3 id="project5-title" data-ar="واجهة برمجة APIs" data-en="API Dashboard"
+                        data-fr="Tableau de Bord API" data-de="API-Dashboard" data-es="Panel de Control de API"
+                        data-zh="API仪表板">واجهة برمجة APIs
                     </h3>
                     <p id="project5-desc" data-ar="بناء لوحة تحكم تفاعلية لإدارة ومراقبة واجهات برمجة التطبيقات"
                         data-en="Built an interactive control dashboard for managing and monitoring application APIs"
@@ -2001,32 +2398,14 @@
                         data-zh="构建了一个用于管理和监控应用程序API的交互式控制仪表板">
                         بناء لوحة تحكم تفاعلية لإدارة ومراقبة واجهات برمجة التطبيقات</p>
                 </div>
-                <div class="project-card">
-                    <div class="project-icon"><svg width="50" height="50" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="6" x2="10" y1="12" y2="12"></line>
-                            <line x1="8" x2="8" y1="10" y2="14"></line>
-                            <line x1="15" x2="15.01" y1="13" y2="13"></line>
-                            <line x1="18" x2="18.01" y1="11" y2="11"></line>
-                            <rect width="20" height="12" x="2" y="6" rx="2"></rect>
-                        </svg></div>
-                    <h3 id="project6-title" data-ar="لعبة ويب تفاعلية" data-en="Interactive Web Game" data-fr="Jeu Web Interactif" data-de="Interaktives Webspiel" data-es="Juego Web Interactivo" data-zh="互动网络游戏">لعبة ويب
-                        تفاعلية</h3>
-                    <p id="project6-desc" data-ar="تطوير لعبة متعددة اللاعبين باستخدام WebSocket و Canvas"
-                        data-en="Developed a multiplayer game using WebSocket and Canvas"
-                        data-fr="Développement d'un jeu multijoueur utilisant WebSocket et Canvas"
-                        data-de="Entwicklung eines Mehrspieler-Spiels mit WebSocket und Canvas"
-                        data-es="Desarrollo de un juego multijugador usando WebSocket y Canvas"
-                        data-zh="使用 WebSocket 和 Canvas 开发了一个多人游戏">
-                        تطوير لعبة متعددة اللاعبين باستخدام WebSocket و Canvas</p>
-                </div>
             </div>
         </div>
     </section>
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title" id="services-title" data-ar="الخدمات" data-en="Services" data-fr="Services" data-de="Dienstleistungen" data-es="Servicios" data-zh="服务">الخدمات</h2>
+            <h2 class="section-title" id="services-title" data-ar="الخدمات" data-en="Services" data-fr="Services"
+                data-de="Dienstleistungen" data-es="Servicios" data-zh="服务">الخدمات</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon"><svg width="45" height="45" viewBox="0 0 24 24" fill="none"
@@ -2036,7 +2415,9 @@
                             <line x1="8" y1="21" x2="16" y2="21"></line>
                             <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg></div>
-                    <h3 id="service1-title" data-ar="تطوير تطبيقات الويب" data-en="Web Application Development" data-fr="Développement d'applications Web" data-de="Webanwendungsentwicklung" data-es="Desarrollo de aplicaciones web" data-zh="网络应用开发">
+                    <h3 id="service1-title" data-ar="تطوير تطبيقات الويب" data-en="Web Application Development"
+                        data-fr="Développement d'applications Web" data-de="Webanwendungsentwicklung"
+                        data-es="Desarrollo de aplicaciones web" data-zh="网络应用开发">
                         تطوير تطبيقات الويب</h3>
                     <p id="service1-desc" data-ar="بناء تطبيقات ويب حديثة ومتجاوبة باستخدام أحدث التقنيات"
                         data-en="Building modern and responsive web applications using the latest technologies"
@@ -2054,7 +2435,8 @@
                             <path d="M2 2l7.586 7.586"></path>
                             <circle cx="11" cy="11" r="2"></circle>
                         </svg></div>
-                    <h3 id="service2-title" data-ar="تصميم واجهات المستخدم" data-en="UI/UX Design" data-fr="Design UI/UX" data-de="UI/UX-Design" data-es="Diseño UI/UX" data-zh="UI/UX设计">تصميم
+                    <h3 id="service2-title" data-ar="تصميم واجهات المستخدم" data-en="UI/UX Design"
+                        data-fr="Design UI/UX" data-de="UI/UX-Design" data-es="Diseño UI/UX" data-zh="UI/UX设计">تصميم
                         واجهات المستخدم</h3>
                     <p id="service2-desc" data-ar="تصميم تجارب مستخدم جذابة وسهلة الاستخدام مع التركيز على الأداء"
                         data-en="Designing attractive and easy-to-use user experiences with focus on performance"
@@ -2072,7 +2454,9 @@
                             </rect>
                             <path d="M12 18h.01"></path>
                         </svg></div>
-                    <h3 id="service3-title" data-ar="تطوير تطبيقات الموبايل" data-en="Mobile App Development" data-fr="Développement d'applications mobiles" data-de="Mobile App-Entwicklung" data-es="Desarrollo de aplicaciones móviles" data-zh="移动应用开发">تطوير
+                    <h3 id="service3-title" data-ar="تطوير تطبيقات الموبايل" data-en="Mobile App Development"
+                        data-fr="Développement d'applications mobiles" data-de="Mobile App-Entwicklung"
+                        data-es="Desarrollo de aplicaciones móviles" data-zh="移动应用开发">تطوير
                         تطبيقات الموبايل</h3>
                     <p id="service3-desc" data-ar="تطوير تطبيقات موبايل أصلية لـ iOS و Android"
                         data-en="Developing native mobile applications for iOS and Android"
@@ -2087,7 +2471,9 @@
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                         </svg></div>
-                    <h3 id="service4-title" data-ar="تحسين الأداء و SEO" data-en="Performance Optimization & SEO" data-fr="Optimisation des performances et SEO" data-de="Leistungsoptimierung & SEO" data-es="Optimización de rendimiento y SEO" data-zh="性能优化和搜索引擎优化">
+                    <h3 id="service4-title" data-ar="تحسين الأداء و SEO" data-en="Performance Optimization & SEO"
+                        data-fr="Optimisation des performances et SEO" data-de="Leistungsoptimierung & SEO"
+                        data-es="Optimización de rendimiento y SEO" data-zh="性能优化和搜索引擎优化">
                         تحسين الأداء و SEO</h3>
                     <p id="service4-desc" data-ar="تحسين سرعة المواقع وتصميمها لمحركات البحث"
                         data-en="Optimizing website speed and designing for search engines"
@@ -2104,7 +2490,9 @@
                             <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                             <path d="M3 12A9 3 0 0 0 21 12"></path>
                         </svg></div>
-                    <h3 id="service5-title" data-ar="قواعد البيانات والـ APIs" data-en="Database & API Development" data-fr="Développement de bases de données et d'API" data-de="Datenbank- und API-Entwicklung" data-es="Desarrollo de bases de datos y API" data-zh="数据库和API开发">
+                    <h3 id="service5-title" data-ar="قواعد البيانات والـ APIs" data-en="Database & API Development"
+                        data-fr="Développement de bases de données et d'API" data-de="Datenbank- und API-Entwicklung"
+                        data-es="Desarrollo de bases de datos y API" data-zh="数据库和API开发">
                         قواعد البيانات والـ APIs
                     </h3>
                     <p id="service5-desc" data-ar="تصميم قواعد بيانات قوية وواجهات برمجة آمنة"
@@ -2122,7 +2510,9 @@
                                 d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
                             </path>
                         </svg></div>
-                    <h3 id="service6-title" data-ar="صيانة ودعم فني" data-en="Maintenance & Technical Support" data-fr="Maintenance et support technique" data-de="Wartung und technischer Support" data-es="Mantenimiento y soporte técnico" data-zh="维护和技术支持">صيانة
+                    <h3 id="service6-title" data-ar="صيانة ودعم فني" data-en="Maintenance & Technical Support"
+                        data-fr="Maintenance et support technique" data-de="Wartung und technischer Support"
+                        data-es="Mantenimiento y soporte técnico" data-zh="维护和技术支持">صيانة
                         ودعم فني</h3>
                     <p id="service6-desc" data-ar="تقديم الدعم الفني المستمر وصيانة الأنظمة"
                         data-en="Providing ongoing technical support and system maintenance"
@@ -2139,7 +2529,9 @@
                             <line x1="12" y1="8" x2="12" y2="12"></line>
                             <line x1="12" y1="16" x2="12.01" y2="16"></line>
                         </svg></div>
-                    <h3 id="service7-title" data-ar="استشارات برمجية" data-en="Software Consulting" data-fr="Consultation logicielle" data-de="Softwareberatung" data-es="Consultoría de software" data-zh="软件咨询">استشارات
+                    <h3 id="service7-title" data-ar="استشارات برمجية" data-en="Software Consulting"
+                        data-fr="Consultation logicielle" data-de="Softwareberatung" data-es="Consultoría de software"
+                        data-zh="软件咨询">استشارات
                         برمجية</h3>
                     <p id="service7-desc" data-ar="تقديم استشارات متخصصة في اختيار التقنيات وتصميم الأنظمة"
                         data-en="Providing specialized consulting in technology selection and system design"
@@ -2164,7 +2556,9 @@
                             <path d="M4.93 19.07l2.83-2.83"></path>
                             <path d="M16.24 7.76l2.83-2.83"></path>
                         </svg></div>
-                    <h3 id="service8-title" data-ar="تطوير React.js" data-en="React.js Development" data-fr="Développement React.js" data-de="React.js-Entwicklung" data-es="Desarrollo React.js" data-zh="React.js开发">تطوير
+                    <h3 id="service8-title" data-ar="تطوير React.js" data-en="React.js Development"
+                        data-fr="Développement React.js" data-de="React.js-Entwicklung" data-es="Desarrollo React.js"
+                        data-zh="React.js开发">تطوير
                         React.js</h3>
                     <p id="service8-desc" data-ar="بناء تطبيقات React حديثة مع Hooks و Context API"
                         data-en="Building modern React applications with Hooks and Context API"
@@ -2184,7 +2578,9 @@
                             <path d="M5 10a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0v-6a3 3 0 0 0-3-3Z">
                             </path>
                         </svg></div>
-                    <h3 id="service9-title" data-ar="تطوير Full-Stack" data-en="Full-Stack Development" data-fr="Développement Full-Stack" data-de="Full-Stack-Entwicklung" data-es="Desarrollo Full-Stack" data-zh="全栈开发">
+                    <h3 id="service9-title" data-ar="تطوير Full-Stack" data-en="Full-Stack Development"
+                        data-fr="Développement Full-Stack" data-de="Full-Stack-Entwicklung"
+                        data-es="Desarrollo Full-Stack" data-zh="全栈开发">
                         تطوير Full-Stack</h3>
                     <p id="service9-desc" data-ar="تطوير كامل التطبيق من الواجهة الأمامية للخلفية وقاعدة البيانات"
                         data-en="Developing complete applications from frontend to backend and database"
@@ -2201,7 +2597,8 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title" id="contact-title" data-ar="تواصل معي" data-en="Contact" data-fr="Contact" data-de="Kontakt" data-es="Contacto" data-zh="联系">تواصل
+            <h2 class="section-title" id="contact-title" data-ar="تواصل معي" data-en="Contact" data-fr="Contact"
+                data-de="Kontakt" data-es="Contacto" data-zh="联系">تواصل
                 معي</h2>
             <div class="contact-content">
                 <div class="contact-form-wrapper">
@@ -2209,22 +2606,32 @@
                     <script src="https://forminit.com/sdk/v1/forminit.js"></script>
                     <form class="contact-form" id="contactForm"><input type="hidden" name="_subject"
                             value="رسالة جديدة من موقع Portfolio">
-                        <div class="form-group"><label for="name" data-ar="الاسم" data-en="Name" data-fr="Nom" data-de="Name" data-es="Nombre" data-zh="姓名">الاسم</label><input
-                                type="text" id="name" name="fi-sender-firstName" required="" placeholder=""
-                                data-ar="أدخل اسمك" data-en="Enter your name" data-fr="Entrez votre nom" data-de="Geben Sie Ihren Namen ein" data-es="Ingrese su nombre" data-zh="输入您的姓名"></div>
-                        <div class="form-group"><label for="email" data-ar="البريد الإلكتروني" data-en="Email" data-fr="Email" data-de="E-Mail" data-es="Correo electrónico" data-zh="电子邮件">البريد
+                        <div class="form-group"><label for="name" data-ar="الاسم" data-en="Name" data-fr="Nom"
+                                data-de="Name" data-es="Nombre" data-zh="姓名">الاسم</label><input type="text" id="name"
+                                name="fi-sender-firstName" required="" placeholder="" data-ar="أدخل اسمك"
+                                data-en="Enter your name" data-fr="Entrez votre nom" data-de="Geben Sie Ihren Namen ein"
+                                data-es="Ingrese su nombre" data-zh="输入您的姓名"></div>
+                        <div class="form-group"><label for="email" data-ar="البريد الإلكتروني" data-en="Email"
+                                data-fr="Email" data-de="E-Mail" data-es="Correo electrónico" data-zh="电子邮件">البريد
                                 الإلكتروني</label><input type="email" id="email" name="fi-sender-email" required=""
-                                placeholder="" data-ar="أدخل بريدك الإلكتروني" data-en="Enter your email" data-fr="Entrez votre email" data-de="Geben Sie Ihre E-Mail ein" data-es="Ingrese su correo electrónico" data-zh="输入您的电子邮件">
+                                placeholder="" data-ar="أدخل بريدك الإلكتروني" data-en="Enter your email"
+                                data-fr="Entrez votre email" data-de="Geben Sie Ihre E-Mail ein"
+                                data-es="Ingrese su correo electrónico" data-zh="输入您的电子邮件">
                         </div>
-                        <div class="form-group"><label for="subject" data-ar="الموضوع"
-                                data-en="Subject" data-fr="Sujet" data-de="Betreff" data-es="Asunto" data-zh="主题">الموضوع</label><input type="text" id="subject" name="fi-text-subject"
-                                required="" placeholder="" data-ar="أدخل موضوع الرسالة" data-en="Enter subject" data-fr="Entrez le sujet" data-de="Geben Sie den Betreff ein" data-es="Ingrese el asunto" data-zh="输入主题"></div>
-                        <div class="form-group"><label for="message" data-ar="الرسالة"
-                                data-en="Message" data-fr="Message" data-de="Nachricht" data-es="Mensaje" data-zh="消息">الرسالة</label><textarea id="message" name="fi-text-message" rows="5"
-                                required="" placeholder="" data-ar="أدخل رسالتك"
-                                data-en="Enter your message" data-fr="Entrez votre message" data-de="Geben Sie Ihre Nachricht ein" data-es="Ingrese su mensaje" data-zh="输入您的消息"></textarea></div>
+                        <div class="form-group"><label for="subject" data-ar="الموضوع" data-en="Subject" data-fr="Sujet"
+                                data-de="Betreff" data-es="Asunto" data-zh="主题">الموضوع</label><input type="text"
+                                id="subject" name="fi-text-subject" required="" placeholder=""
+                                data-ar="أدخل موضوع الرسالة" data-en="Enter subject" data-fr="Entrez le sujet"
+                                data-de="Geben Sie den Betreff ein" data-es="Ingrese el asunto" data-zh="输入主题"></div>
+                        <div class="form-group"><label for="message" data-ar="الرسالة" data-en="Message"
+                                data-fr="Message" data-de="Nachricht" data-es="Mensaje"
+                                data-zh="消息">الرسالة</label><textarea id="message" name="fi-text-message" rows="5"
+                                required="" placeholder="" data-ar="أدخل رسالتك" data-en="Enter your message"
+                                data-fr="Entrez votre message" data-de="Geben Sie Ihre Nachricht ein"
+                                data-es="Ingrese su mensaje" data-zh="输入您的消息"></textarea></div>
                         <button type="submit" class="btn btn-primary" id="submit-btn" data-ar="إرسال الرسالة"
-                            data-en="Send Message" data-fr="Envoyer le message" data-de="Nachricht senden" data-es="Enviar mensaje" data-zh="发送消息">إرسال
+                            data-en="Send Message" data-fr="Envoyer le message" data-de="Nachricht senden"
+                            data-es="Enviar mensaje" data-zh="发送消息">إرسال
                             الرسالة</button>
                         <div class="form-message" id="formMessage"></div>
                     </form>
@@ -2237,14 +2644,16 @@
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7">
                                 </path>
                             </svg></div>
-                        <h3 data-ar="جيميل" data-en="Gmail" data-fr="Gmail" data-de="Gmail" data-es="Gmail" data-zh="Gmail">جيميل</h3>
+                        <h3 data-ar="جيميل" data-en="Gmail" data-fr="Gmail" data-de="Gmail" data-es="Gmail"
+                            data-zh="Gmail">جيميل</h3>
                         <p>ahmedabdellah310@gmail.com</p>
                     </a><a href="https://t.me/ahmedabdellah_310" target="_blank" class="contact-card clickable">
                         <div class="contact-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m22 2-7 20-4-9-9-4 20-7z"></path>
                             </svg></div>
-                        <h3 data-ar="تيليجرام" data-en="Telegram" data-fr="Telegram" data-de="Telegram" data-es="Telegram" data-zh="Telegram">تيليجرام</h3>
+                        <h3 data-ar="تيليجرام" data-en="Telegram" data-fr="Telegram" data-de="Telegram"
+                            data-es="Telegram" data-zh="Telegram">تيليجرام</h3>
                         <p>t.me/ahmedabdellah_310</p>
                     </a></div>
             </div>
@@ -2268,20 +2677,99 @@
             <path d="M18 15l-6-6-6 6"></path>
         </svg></button>
     <script>
-        // Mobile Menu Toggle
+        // Professional Sidebar Elements (must be defined first)
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarNavItems = document.querySelectorAll('.sidebar-nav-item');
+
+        // Mobile Menu Toggle (now Sidebar Toggle)
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
 
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            // Toggle sidebar instead of mobile menu
+            sidebar.classList.toggle('active');
             hamburger.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close menu when clicking on a link
+        // Close menu when clicking on a link (now closes sidebar)
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
+                // Also close sidebar if open
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Professional Sidebar Functionality
+        // Close sidebar function
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            hamburger.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Sidebar close button
+        sidebarClose.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        // Close sidebar when clicking on sidebar navigation links
+        sidebarNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                closeSidebar();
+            });
+        });
+
+        // Update active sidebar navigation item based on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Keyboard navigation (ESC to close sidebar)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                closeSidebar();
+            }
+        });
+
+        // Add smooth scroll behavior to sidebar navigation
+        sidebarNavItems.forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
@@ -2543,9 +3031,10 @@
             ar: {
                 greeting: 'مرحباً، أنا',
                 heroSubtitle: 'مهندس برمجيات ومطور ويب ومصمم',
-                heroDescription: 'أساعد الشركات على تحسين التشغيل، وضبط التكاليف، ورفع جودة تجربة العملاء.',
+                heroDescription: 'I help companies improve operations, control costs, and enhance customer experience quality.',
                 navBrand: 'أحمد عبداللاه',
                 name: 'أحمد عبداللاه',
+                sidebarProfileTitle: 'مهندس برمجيات ومطور ويب',
                 contactMe: 'تواصل معي',
                 learnMore: 'اعرف المزيد',
                 home: 'الرئيسية',
@@ -2636,6 +3125,7 @@
                 heroDescription: 'I help companies improve operations, control costs, and enhance customer experience quality.',
                 navBrand: 'Ahmed Abdellah',
                 name: 'Ahmed Abdellah',
+                sidebarProfileTitle: 'Software Engineer & Web Developer',
                 contactMe: 'Contact Me',
                 learnMore: 'Learn More',
                 home: 'Home',
@@ -2726,6 +3216,7 @@
                 heroDescription: "J'aide les entreprises à améliorer leurs opérations, à maîtriser les coûts et à améliorer la qualité de l'expérience client.",
                 navBrand: 'Ahmed Abdellah',
                 name: 'Ahmed Abdellah',
+                sidebarProfileTitle: 'Ingénieur logiciel & Développeur web',
                 contactMe: 'Contactez-moi',
                 learnMore: 'En savoir plus',
                 home: 'Accueil',
@@ -2816,6 +3307,7 @@
                 heroDescription: 'Ich helfe Unternehmen, Abläufe zu verbessern, Kosten zu kontrollieren und die Qualität des Kundenerlebnisses zu steigern.',
                 navBrand: 'Ahmed Abdellah',
                 name: 'Ahmed Abdellah',
+                sidebarProfileTitle: 'Softwareentwickler & Webentwickler',
                 contactMe: 'Kontaktieren Sie mich',
                 learnMore: 'Erfahren Sie mehr',
                 home: 'Startseite',
@@ -2906,6 +3398,7 @@
                 heroDescription: 'Ayudo a las empresas a mejorar las operaciones, controlar costos y mejorar la calidad de la experiencia del cliente.',
                 navBrand: 'Ahmed Abdellah',
                 name: 'Ahmed Abdellah',
+                sidebarProfileTitle: 'Ingeniero de software & Desarrollador web',
                 contactMe: 'Contáctame',
                 learnMore: 'Aprende más',
                 home: 'Inicio',
@@ -2996,6 +3489,7 @@
                 heroDescription: '我帮助公司改善运营、控制成本并提升客户体验质量。',
                 navBrand: '艾哈迈德·阿卜杜拉',
                 name: '艾哈迈德·阿卜杜拉',
+                sidebarProfileTitle: '软件工程师和网络开发者',
                 contactMe: '联系我',
                 learnMore: '了解更多',
                 home: '首页',
@@ -3108,6 +3602,17 @@
             document.getElementById('nav-contact').textContent = trans.contact;
             document.querySelector('.nav-brand').textContent = trans.navBrand;
 
+            // Update sidebar navigation
+            document.getElementById('sidebar-nav-home').textContent = trans.home;
+            document.getElementById('sidebar-nav-about').textContent = trans.about;
+            document.getElementById('sidebar-nav-experience').textContent = trans.experience;
+            document.getElementById('sidebar-nav-skills').textContent = trans.skills;
+            document.getElementById('sidebar-nav-projects').textContent = trans.projects;
+            document.getElementById('sidebar-nav-services').textContent = trans.services;
+            document.getElementById('sidebar-nav-contact').textContent = trans.contact;
+            document.querySelector('.sidebar-profile-name').textContent = trans.name;
+            document.getElementById('sidebar-profile-title').textContent = trans.sidebarProfileTitle;
+
             // Update hero section
             document.getElementById('greeting').textContent = trans.greeting;
             document.getElementById('name').textContent = trans.name;
@@ -3197,7 +3702,7 @@
             // Update contact section - form labels and placeholders
             const formLabels = document.querySelectorAll('.form-group label');
             const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
-            
+
             // Map of form elements to their translation keys
             const formLabelKeys = [
                 trans.formName,
@@ -3205,7 +3710,7 @@
                 trans.formSubject,
                 trans.formMessage
             ];
-            
+
             formLabels.forEach((label, index) => {
                 if (index < formLabelKeys.length) {
                     label.textContent = formLabelKeys[index];
@@ -3214,26 +3719,26 @@
 
             // Update placeholders
             const placeholders = [
-                trans.formName === 'الاسم' ? 'أدخل اسمك' : 
+                trans.formName === 'الاسم' ? 'أدخل اسمك' :
                     trans.formName === 'Name' ? 'Enter your name' :
-                    trans.formName === 'Nom' ? 'Entrez votre nom' :
-                    trans.formName === 'Name' ? 'Geben Sie Ihren Namen ein' :
-                    trans.formName === 'Nombre' ? 'Ingrese su nombre' : '输入您的姓名',
+                        trans.formName === 'Nom' ? 'Entrez votre nom' :
+                            trans.formName === 'Name' ? 'Geben Sie Ihren Namen ein' :
+                                trans.formName === 'Nombre' ? 'Ingrese su nombre' : '输入您的姓名',
                 trans.formEmail === 'البريد الإلكتروني' ? 'أدخل بريدك الإلكتروني' :
                     trans.formEmail === 'Email' ? 'Enter your email' :
-                    trans.formEmail === 'Email' ? 'Entrez votre email' :
-                    trans.formEmail === 'E-Mail' ? 'Geben Sie Ihre E-Mail ein' :
-                    trans.formEmail === 'Correo electrónico' ? 'Ingrese su correo electrónico' : '输入您的电子邮件',
+                        trans.formEmail === 'Email' ? 'Entrez votre email' :
+                            trans.formEmail === 'E-Mail' ? 'Geben Sie Ihre E-Mail ein' :
+                                trans.formEmail === 'Correo electrónico' ? 'Ingrese su correo electrónico' : '输入您的电子邮件',
                 trans.formSubject === 'الموضوع' ? 'أدخل موضوع الرسالة' :
                     trans.formSubject === 'Subject' ? 'Enter subject' :
-                    trans.formSubject === 'Sujet' ? 'Entrez le sujet' :
-                    trans.formSubject === 'Betreff' ? 'Geben Sie den Betreff ein' :
-                    trans.formSubject === 'Asunto' ? 'Ingrese el asunto' : '输入主题',
+                        trans.formSubject === 'Sujet' ? 'Entrez le sujet' :
+                            trans.formSubject === 'Betreff' ? 'Geben Sie den Betreff ein' :
+                                trans.formSubject === 'Asunto' ? 'Ingrese el asunto' : '输入主题',
                 trans.formMessage === 'الرسالة' ? 'أدخل رسالتك' :
                     trans.formMessage === 'Message' ? 'Enter your message' :
-                    trans.formMessage === 'Message' ? 'Entrez votre message' :
-                    trans.formMessage === 'Nachricht' ? 'Geben Sie Ihre Nachricht ein' :
-                    trans.formMessage === 'Mensaje' ? 'Ingrese su mensaje' : '输入您的消息'
+                        trans.formMessage === 'Message' ? 'Entrez votre message' :
+                            trans.formMessage === 'Nachricht' ? 'Geben Sie Ihre Nachricht ein' :
+                                trans.formMessage === 'Mensaje' ? 'Ingrese su mensaje' : '输入您的消息'
             ];
 
             formInputs.forEach((input, index) => {
