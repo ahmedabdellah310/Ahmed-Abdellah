@@ -299,6 +299,31 @@
             gap: 1rem;
         }
 
+        /* Sidebar Toggle Button in Navbar */
+        .sidebar-toggle-nav {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .sidebar-toggle-nav:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-theme .sidebar-toggle-nav {
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+        }
+
         .language-dropdown {
             position: relative;
         }
@@ -404,31 +429,6 @@
 
         html[dir="ltr"] .lang-option {
             text-align: left;
-        }
-
-        /* Sidebar Toggle Button in Navbar */
-        .sidebar-toggle-nav {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-        .sidebar-toggle-nav:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        body.light-theme .sidebar-toggle-nav {
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
         }
 
         /* Professional Sidebar Styles */
@@ -1733,22 +1733,16 @@
                 <li><a href="#contact" id="nav-contact" data-ar="التواصل" data-en="Contact" data-fr="Contact" data-de="Kontakt" data-es="Contacto" data-zh="联系">التواصل</a></li>
             </ul>
             <div class="nav-actions">
-                <!-- Sidebar Toggle Button moved here -->
-                <button type="button" class="sidebar-toggle-nav" id="sidebarToggle" aria-label="Toggle sidebar">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-                
-                <div class="theme-toggle"><button class="theme-btn" id="themeToggle" aria-label="Toggle theme"><span
-                            class="theme-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- زر الثيم (الأول من اليمين) -->
+                <div class="theme-toggle">
+                    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+                        <span class="theme-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                            </svg></span><span class="theme-icon"><svg width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                            </svg>
+                        </span>
+                        <span class="theme-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="5"></circle>
                                 <line x1="12" y1="1" x2="12" y2="3"></line>
                                 <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -1758,29 +1752,45 @@
                                 <line x1="21" y1="12" x2="23" y2="12"></line>
                                 <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                            </svg></span></button></div>
-                <div class="language-dropdown"><button class="lang-dropdown-btn" id="langDropdownBtn"><span
-                            class="lang-flag" id="currentLangFlag">🇸🇦</span><span class="lang-text"
-                            id="currentLangText">العربية</span><svg width="12" height="12" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg></button>
-                    <div class="lang-dropdown-menu" id="langDropdownMenu"><button class="lang-option" data-lang="ar"
-                            data-flag="🇸🇦"><span class="lang-flag">🇸🇦</span><span
-                                class="lang-name">العربية</span></button><button class="lang-option" data-lang="en"
-                            data-flag="🇬🇧"><span class="lang-flag">🇬🇧</span><span
-                                class="lang-name">English</span></button><button class="lang-option" data-lang="fr"
-                            data-flag="🇫🇷"><span class="lang-flag">🇫🇷</span><span
-                                class="lang-name">Français</span></button><button class="lang-option" data-lang="de"
-                            data-flag="🇩🇪"><span class="lang-flag">🇩🇪</span><span
-                                class="lang-name">Deutsch</span></button><button class="lang-option" data-lang="es"
-                            data-flag="🇪🇸"><span class="lang-flag">🇪🇸</span><span
-                                class="lang-name">Español</span></button><button class="lang-option" data-lang="zh"
-                            data-flag="🇨🇳"><span class="lang-flag">🇨🇳</span><span
-                                class="lang-name">中文</span></button></div>
+                            </svg>
+                        </span>
+                    </button>
                 </div>
-                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                
+                <!-- زر تغيير اللغة (الثاني) -->
+                <div class="language-dropdown">
+                    <button class="lang-dropdown-btn" id="langDropdownBtn">
+                        <span class="lang-flag" id="currentLangFlag">🇸🇦</span>
+                        <span class="lang-text" id="currentLangText">العربية</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown-menu" id="langDropdownMenu">
+                        <button class="lang-option" data-lang="ar" data-flag="🇸🇦"><span class="lang-flag">🇸🇦</span><span class="lang-name">العربية</span></button>
+                        <button class="lang-option" data-lang="en" data-flag="🇬🇧"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button>
+                        <button class="lang-option" data-lang="fr" data-flag="🇫🇷"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button>
+                        <button class="lang-option" data-lang="de" data-flag="🇩🇪"><span class="lang-flag">🇩🇪</span><span class="lang-name">Deutsch</span></button>
+                        <button class="lang-option" data-lang="es" data-flag="🇪🇸"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button>
+                        <button class="lang-option" data-lang="zh" data-flag="🇨🇳"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span></button>
+                    </div>
+                </div>
+                
+                <!-- زر القائمة الجانبية (الثالث) -->
+                <button type="button" class="sidebar-toggle-nav" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                
+                <!-- الهامبرغر (يظهر فقط على الجوال) -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
