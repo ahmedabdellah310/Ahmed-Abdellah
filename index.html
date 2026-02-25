@@ -170,7 +170,7 @@
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
@@ -461,6 +461,11 @@
             .sidebar {
                 width: 280px;
                 right: -280px;
+                display: none;
+            }
+
+            .sidebar.active {
+                display: block;
             }
 
             html[dir="ltr"] .sidebar {
@@ -533,10 +538,12 @@
         .hero {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
             padding-top: 80px;
+            padding-bottom: 120px;
             overflow: hidden;
         }
 
@@ -727,10 +734,12 @@
         }
 
         .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            margin-top: auto;
+            align-self: center;
             animation: bounce 2s infinite;
         }
 
@@ -1354,6 +1363,10 @@
             .skills-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .hamburger {
+                display: flex;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1362,6 +1375,10 @@
             }
 
             .hamburger {
+                display: none;
+            }
+
+            .sidebar-toggle-nav {
                 display: flex;
             }
 
@@ -1387,7 +1404,7 @@
             .hero {
                 min-height: auto;
                 padding-top: 110px;
-                padding-bottom: 60px;
+                padding-bottom: 80px;
             }
 
             .scroll-indicator {
@@ -1395,9 +1412,8 @@
                 bottom: auto;
                 left: auto;
                 transform: none;
-                margin-top: 28px;
-                display: flex;
-                justify-content: center;
+                margin-top: auto;
+                align-self: center;
             }
 
             .hero-buttons {
@@ -1490,19 +1506,21 @@
             }
 
             .scroll-indicator {
-                margin-top: 20px;
+                margin-top: auto;
+                align-self: center;
             }
         }
 
         /* تحسين مؤشر التمرير للهواتف */
         @media (max-width: 768px) {
             .scroll-indicator {
-                position: absolute;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                margin-top: 0;
-                z-index: 100;
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                margin-top: auto;
+                align-self: center;
+                z-index: auto;
                 animation: bounce 2s infinite;
             }
             
@@ -1528,7 +1546,7 @@
             .hero {
                 padding-top: 60px;
                 min-height: 90vh;
-                padding-bottom: 40px;
+                padding-bottom: 60px;
             }
             
             .hero-content {
@@ -1547,7 +1565,12 @@
 
         @media (max-width: 480px) {
             .scroll-indicator {
-                bottom: 15px;
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                margin-top: auto;
+                align-self: center;
             }
             
             .scroll-indicator span {
@@ -1556,7 +1579,7 @@
             }
             
             .hero {
-                padding-bottom: 30px;
+                padding-bottom: 50px;
             }
         }
 
