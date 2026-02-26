@@ -486,7 +486,9 @@
 
         @media (min-width: 769px) {
             .sidebar,
-            .sidebar-overlay {
+            .sidebar-overlay,
+            .sidebar-toggle-nav,
+            .hamburger {
                 display: none !important;
             }
         }
@@ -2108,6 +2110,16 @@
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarClose = document.getElementById('sidebarClose');
 
+        const updateSidebarToggleVisibility = () => {
+            const navMenu = document.querySelector('.nav-menu');
+            const toggleBtn = document.getElementById('sidebarToggle');
+            if (!toggleBtn || !navMenu) return;
+            const menuVisible = window.getComputedStyle(navMenu).display !== 'none';
+            toggleBtn.style.display = menuVisible ? 'none' : 'flex';
+        };
+
+        updateSidebarToggleVisibility();
+
         // Toggle sidebar
         const openSidebar = () => {
             if (!sidebar.classList.contains('active')) {
@@ -2132,6 +2144,7 @@
 
         window.addEventListener('resize', () => {
             closeSidebar();
+            updateSidebarToggleVisibility();
         });
 
         // Close sidebar when clicking on a link
