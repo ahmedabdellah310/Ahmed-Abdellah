@@ -484,6 +484,13 @@
             }
         }
 
+        @media (min-width: 769px) {
+            .sidebar,
+            .sidebar-overlay {
+                display: none !important;
+            }
+        }
+
         /* Removed light theme sidebar styles */
 
         /* Rest of the existing styles */
@@ -1505,8 +1512,11 @@
             }
 
             .scroll-indicator {
-                margin-top: auto;
-                align-self: center;
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                pointer-events: none;
             }
         }
 
